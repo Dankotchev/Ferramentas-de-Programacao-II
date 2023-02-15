@@ -194,6 +194,7 @@ fabric.properties
 .mtj.tmp/
 
 # Package Files #
+*.7z
 *.jar
 *.war
 *.nar

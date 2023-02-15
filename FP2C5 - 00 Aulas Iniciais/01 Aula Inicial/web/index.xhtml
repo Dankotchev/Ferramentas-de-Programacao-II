@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    
+    <head>
+        <title>Ferramentas de Programação II</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    
+    <body>
+        
+        <h1>Ferramentas de Programação II</h1>
+        <h2>Aula Inicial</h2>
+        
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse imperdiet justo in euismod sollicitudin.
+            Quisque auctor eget diam ut tincidunt. In bibendum nisl vitae suscipit commodo.
+            Aliquam pretium erat vitae enim fermentum vehicula. Maecenas consectetur mauris sed ultrices dapibus.
+            Sed imperdiet fermentum interdum. Donec sit amet rhoncus nibh. Nulla luctus auctor dictum.
+            Etiam gravida mauris sed volutpat ultricies. Etiam luctus auctor ipsum, non tempus mauris. </p>
+        
+        <button>botão</button>
+        
+        <div>
+            <h2>Apresentação</h2>
+            <p>Olá </p>
+        </div>
+        
+        <h:form>
+            <!--Acessa os metodos automaticamente, basta ter os gets e sets--> 
+            Nome: <h:inputText value="#{pessoaControler.pessoa.nome}"/> 
+            <br/>
+            Sobrenome: <h:inputText value="#{pessoaControler.pessoa.sobrenome}"/>
+            <br/>
+            <h:commandButton value="Dizer olá" action="#{pessoaControler.dizerOla}"/>
+            
+        </h:form>
+        
+<!--        <h:outputText value="#{pessoaControler.pessoa.nome} " />
+        <h:outputText value="#{pessoaControler.pessoa.sobrenome} 😐"/>-->
+        
+            <!--Apresentando a lista de pessoas em forma de tabela-->
+        <div>
+            <h:dataTable value="#{pessoaControler.listaPessoas}" var="pessoa">
+                <h:column>
+                    👤 #{pessoa.nome}
+                </h:column>
+                <h:column>
+                    #{pessoa.sobrenome}
+                </h:column>
+            </h:dataTable>
+        </div>
+        
+    </body>
+    
+</html>
