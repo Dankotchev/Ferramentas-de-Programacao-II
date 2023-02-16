@@ -1,56 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
-    
-    <head>
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
         <title>Ferramentas de Programação II</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    
-    <body>
-        
+    </h:head>
+
+    <h:body>
+
         <h1>Ferramentas de Programação II</h1>
-        <h2>Aula Inicial</h2>
-        
+        <h2>Aula Inicial - Cadastro de Pessoas</h2>
+
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse imperdiet justo in euismod sollicitudin.
             Quisque auctor eget diam ut tincidunt. In bibendum nisl vitae suscipit commodo.
             Aliquam pretium erat vitae enim fermentum vehicula. Maecenas consectetur mauris sed ultrices dapibus.
             Sed imperdiet fermentum interdum. Donec sit amet rhoncus nibh. Nulla luctus auctor dictum.
             Etiam gravida mauris sed volutpat ultricies. Etiam luctus auctor ipsum, non tempus mauris. </p>
-        
-        <button>botão</button>
-        
+
+<!--        <p:commandButton value="Informação" action="#{mensagem.info(Uma)}"-->
+        <h:button value="botão html"></h:button>
+
         <div>
-            <h2>Apresentação</h2>
-            <p>Olá </p>
+            <h:form>
+                <p:panelGrid columns="2">
+
+                    <f:facet name="header">
+                        <h4>Cadastro de Pessoas</h4>
+                    </f:facet>
+
+                    <p:outputLabel for="nome" value="Nome"/>
+                    <p:inputText id="nome"
+                                 value="#{pessoaControler.pessoa.nome}"/>
+<!--                    <p:message for="nome" display="text"/>-->
+
+                    <p:outputLabel for="sobrenome" value="Sobrenome"/>
+                    <p:inputText id="sobrenome" value="#{pessoaControler.pessoa.sobrenome}"/>
+
+
+                    <p:outputLabel for="dataNascimento" value="Data de Nascimento"/>
+                    <p:datePicker id="dataNascimento" 
+                                  value="#{pessoaControler.pessoa.dataNascimento}" 
+                                  mindate="#{pessoaControler.dataMinima}"
+                                  maxdate="#{pessoaControler.dataMaxima}"/>
+
+                </p:panelGrid>
+                <br/>
+
+                <p:commandButton value="Enviar" 
+                                 update="tabela"
+                                 action="#{pessoaControler.dizerOla}"
+                                 />
+                <!-- update: necessário para atualizar a tabela-->
+            </h:form>
         </div>
-        
-        <h:form>
-            <!--Acessa os metodos automaticamente, basta ter os gets e sets--> 
-            Nome: <h:inputText value="#{pessoaControler.pessoa.nome}"/> 
-            <br/>
-            Sobrenome: <h:inputText value="#{pessoaControler.pessoa.sobrenome}"/>
-            <br/>
-            <h:commandButton value="Dizer olá" action="#{pessoaControler.dizerOla}"/>
-            
-        </h:form>
-        
-<!--        <h:outputText value="#{pessoaControler.pessoa.nome} " />
-        <h:outputText value="#{pessoaControler.pessoa.sobrenome} 😐"/>-->
-        
+
+        <div>
             <!--Apresentando a lista de pessoas em forma de tabela-->
-        <div>
-            <h:dataTable value="#{pessoaControler.listaPessoas}" var="pessoa">
-                <h:column>
+            <p:dataTable id="tabela" 
+                         value="#{pessoaControler.listaPessoas}" 
+                         var="pessoa">
+                <p:column headerText="Nome">
                     👤 #{pessoa.nome}
-                </h:column>
-                <h:column>
+                </p:column>
+                <p:column headerText="Sobrenome">
                     #{pessoa.sobrenome}
-                </h:column>
-            </h:dataTable>
+                </p:column>
+                <p:column headerText="Data de Nascimento">
+                    #{pessoa.dataNascimento}
+                </p:column>
+            </p:dataTable>
         </div>
-        
-    </body>
-    
+
+    </h:body>
+
 </html>

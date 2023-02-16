@@ -1,12 +1,14 @@
 package br.edu.ifsp.pep.aula1.entity;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class Pessoa implements Serializable{
 
     private String nome;
     private String sobrenome;
+    private LocalDate dataNascimento;
     
     
     // Código Gerado e necessário
@@ -24,6 +26,14 @@ public class Pessoa implements Serializable{
 
     public void setSobrenome(String sobrenome) {
         this.sobrenome = sobrenome;
+    }
+
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(LocalDate dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
 
     @Override

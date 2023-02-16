@@ -1,9 +1,11 @@
 package br.edu.ifsp.pep.aula1.controler;
 
 import br.edu.ifsp.pep.aula1.entity.Pessoa;
+import br.edu.ifsp.pep.aula1.util.Mensagem;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +19,9 @@ public class PessoaControler implements Serializable{
     private Pessoa pessoa;
     private List<Pessoa> listaPessoas;
     
+    private LocalDate dataMinima = LocalDate.now().minusWeeks(1);
+    private LocalDate dataMaxima = LocalDate.now().plusWeeks(1);
+    
     // Servidor instancia por padrão o construtor vazio
     // Necessário instaciar as demais classes para funcionar, usando um construtor vazio
     public PessoaControler() {
@@ -27,8 +32,17 @@ public class PessoaControler implements Serializable{
     public void dizerOla() {
         this.listaPessoas.add(pessoa);
         this.pessoa = new Pessoa();
-        System.out.println("Olá");      
         this.listarPessoas();
+        System.out.println("Olá");
+        
+        if (this.pessoa.getNome() == null ||
+                this.pessoa.getNome().length() < 5) {
+            Mensagem.warn("Informe um nome válido");
+            return;
+            
+        }
+        
+        Mensagem.info("Pessoa Cadastrada");
     }
     
     private void listarPessoas(){
@@ -48,6 +62,14 @@ public class PessoaControler implements Serializable{
 
     public List<Pessoa> getListaPessoas() {
         return listaPessoas;
+    }
+
+    public LocalDate getDataMinima() {
+        return dataMinima;
+    }
+
+    public LocalDate getDataMaxima() {
+        return dataMaxima;
     }
     
 }
