@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <title>Ferramentas de Programação II</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta charset="UTF-8"/>
+    </h:head>
+
+    <h:body>
+
+        <h1>Ferramentas de Programação II</h1>
+        <h2>Aula Inicial - Cadastro de Pessoas</h2>
+        <h3>Application Scoped</h3>
+
+
+        <div>
+            <h:form>
+                <p:message for="nome" display="text" />
+                <p:poll interval="2" update="tabelaDeNomes"/>
+
+                <p:panelGrid columns="2">
+
+                    <f:facet name="header">
+                        <h4>Cadastro de Pessoas</h4>
+                    </f:facet>
+
+                    <p:outputLabel for="nome" value="Nome"/>
+                    <p:inputText id="nome"
+                                 value="#{pessoaControler.nome}"/>
+
+                    <p:outputLabel/>
+                    <h:commandButton value="Enviar"
+                                     action="#{pessoaControler.adicionar}"/>
+
+                </p:panelGrid>
+            </h:form>
+        </div>
+
+        <div>
+            <p:dataTable id="tabelaDeNomes"
+                         value="#{pessoaControler.listaNomes}"
+                         var="item">
+
+                <p:column headerText="Nome">
+                    <h:outputText value="#{item}"/>
+                </p:column>
+
+            </p:dataTable>
+        </div>
+
+    </h:body>
+
+</html>

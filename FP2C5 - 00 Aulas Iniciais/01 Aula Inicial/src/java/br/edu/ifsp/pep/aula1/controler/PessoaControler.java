@@ -1,13 +1,13 @@
 package br.edu.ifsp.pep.aula1.controler;
 
 import br.edu.ifsp.pep.aula1.entity.Pessoa;
-import br.edu.ifsp.pep.aula1.util.Mensagem;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import util.Mensagem;
 
 
 
