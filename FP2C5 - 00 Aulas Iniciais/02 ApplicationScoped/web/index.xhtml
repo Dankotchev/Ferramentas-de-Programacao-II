@@ -13,16 +13,30 @@
 
     <h:body>
 
-        <h1>Ferramentas de Programação II</h1>
-        <h2>Aula Inicial - Cadastro de Pessoas</h2>
-        <h3>Application Scoped</h3>
+        <div>
+            <h1>Ferramentas de Programação II</h1>
+            <h2>Aula Inicial - Cadastro de Pessoas</h2>
+            <h3>Application Scoped</h3>
+        </div>
 
 
         <div>
             <h:form>
-                <p:message for="nome" display="text" />
+
+                <!--Exibe uma mensagem na lateral da página.-->
+                <p:growl id="growl" showDetail="true" />
+
+                <!--Dado um intervalo, enviar requisições para o servidor, 
+                    assim atualizando os "componentes".
+                -->
                 <p:poll interval="2" update="tabelaDeNomes"/>
 
+                <!--Organiza os componentes em um grid, no caso de duas colunas.-->
+
+                <!--FACETs:
+                    HEADER :: Adiciona um cabeçalho no componente Grid.
+                    FOOTER :: Adiciona um rodapé no componente Grid.
+                -->
                 <p:panelGrid columns="2">
 
                     <f:facet name="header">
@@ -33,9 +47,12 @@
                     <p:inputText id="nome"
                                  value="#{pessoaControler.nome}"/>
 
-                    <p:outputLabel/>
-                    <h:commandButton value="Enviar"
-                                     action="#{pessoaControler.adicionar}"/>
+                    <f:facet name="footer">
+                        <div style="display:flex;justify-content:center;align-items:center" >
+                            <h:commandButton value="Enviar"
+                                             action="#{pessoaControler.adicionar}"/>
+                        </div>
+                    </f:facet>
 
                 </p:panelGrid>
             </h:form>
