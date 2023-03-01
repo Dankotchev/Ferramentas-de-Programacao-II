@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <title>Chat</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta charset="UTF-8"/>
+    </h:head>
+
+    <h:body>
+
+        <div>
+            <h:form>
+
+                <p:panelGrid columns="2">
+
+                    <f:facet name="header">
+                        <h4>Chat</h4>
+                    </f:facet>
+
+                    <p:outputLabel value="Usuario Logado"/>
+                    <p:outputLabel value="#{loginController.nome}"/>
+
+                    <p:outputLabel value="Destinatario"/>
+                    <p:selectOneMenu id="option" >
+
+                        <f:selectItem itemLabel="Selecione Um" itemValue=""/>
+                        <f:selectItems value="#{applicationController.listaUsuarios}"/>
+
+                    </p:selectOneMenu>
+
+                    <p:outputLabel value="Mensagem"/>
+                    <p:inputTextarea id="messagens" />
+
+                    <p:commandButton value="Enviar"/>
+
+                </p:panelGrid>
+
+            </h:form>
+        </div>
+
+    </h:body>
+
+</html>
