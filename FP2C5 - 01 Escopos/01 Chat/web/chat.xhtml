@@ -22,26 +22,38 @@
                         <h4>Chat</h4>
                     </f:facet>
 
-                    <p:outputLabel value="Usuario Logado"/>
-                    <p:outputLabel value="#{loginController.nome}"/>
+                    <p:outputLabel for="@next" value="Usuario Logado"/>
+                    <p:outputLabel id="usuario" value="#{loginController.nome}"/>
 
                     <p:outputLabel value="Destinatario"/>
-                    <p:selectOneMenu id="option" >
+                    <p:selectOneMenu id="usuarios" 
+                                     value="#{applicationController.usuarioDestino}">
 
-                        <f:selectItem itemLabel="Selecione Um" itemValue=""/>
+                        <f:selectItem itemLabel="Selecione um usuário" itemValue=""/>
                         <f:selectItems value="#{applicationController.listaUsuarios}"/>
 
                     </p:selectOneMenu>
 
-                    <p:outputLabel value="Mensagem"/>
-                    <p:inputTextarea id="messagens" />
+                    <p:outputLabel for="@next" value="Mensagem"/>
+                    <p:inputTextarea id="messagens"
+                                     value="#{applicationController.mensagem}"/>
 
-                    <p:commandButton value="Enviar"/>
+                    <f:facet name="footer">
+                        <p:commandButton value="Enviar"
+                                         action="#{applicationController.enviar}"/>
+                    </f:facet>
 
                 </p:panelGrid>
 
             </h:form>
         </div>
+        
+        <h:form>
+            <!--apresentar as mensagens aqui dentro-->
+            <p:dataTable scrollable="true">
+                
+            </p:dataTable>
+        </h:form>
 
     </h:body>
 

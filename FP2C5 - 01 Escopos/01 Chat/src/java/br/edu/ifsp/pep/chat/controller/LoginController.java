@@ -13,9 +13,10 @@ public class LoginController implements Serializable {
     @Inject
     private ApplicationController applicationController;
     private String nome;
+    private String usuarioDestino;
 
     public String autenticar() {
-        System.out.println("Usuário: " + nome);
+//        System.out.println("Usuário: " + nome);
         if (!applicationController.adicionarUsuarios(nome)) {
             Mensagem.error("Usuário já cadastrado");
             return null; // Premanece na mesma página
@@ -29,5 +30,13 @@ public class LoginController implements Serializable {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public String getUsuarioDestino() {
+        return usuarioDestino;
+    }
+
+    public void setUsuarioDestino(String usuarioDestino) {
+        this.usuarioDestino = usuarioDestino;
     }
 }

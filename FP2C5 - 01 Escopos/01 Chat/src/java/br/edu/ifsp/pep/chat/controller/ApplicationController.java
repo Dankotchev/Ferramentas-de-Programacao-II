@@ -10,8 +10,24 @@ import java.util.List;
 public class ApplicationController {
 
     private List<String> listaUsuarios = new ArrayList<>();
+    
     private String listagem;
-
+    private String nome;
+    private String usuarioDestino;
+    private String mensagem;
+    
+    public void enviar(){
+        System.out.println("Usuário: " +nome);
+        System.out.println("Usuário Destinatário: " +usuarioDestino);
+        System.out.println("Mensagem: " +mensagem);
+    }
+    
+    // Apresentar as mensgens
+    // Possivelmente uma lista de usuarios, composta por uma lista de destinatarios
+    // composta pelas as mensagens
+        
+    // Ou criar uma classe usuario, que carrega uma lista de destinatarios e suas mensagens
+        
     public boolean adicionarUsuarios(String nome) {
         if (listaUsuarios.contains(nome)) {
             return false;
@@ -20,6 +36,7 @@ public class ApplicationController {
         return true;
     }
 
+    //
     public List<String> getListaUsuarios() {
         return listaUsuarios;
     }
@@ -36,4 +53,27 @@ public class ApplicationController {
         this.listagem = listagem;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getUsuarioDestino() {
+        return usuarioDestino;
+    }
+
+    public void setUsuarioDestino(String usuarioDestino) {
+        this.usuarioDestino = usuarioDestino;
+    }
+
+    public String getMensagem() {
+        return mensagem;
+    }
+
+    public void setMensagem(String mensagem) {
+        this.mensagem = mensagem;
+    }
 }
