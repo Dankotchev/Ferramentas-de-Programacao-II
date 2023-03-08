@@ -1,5 +1,8 @@
-# Created by https://www.toptal.com/developers/gitignore/api/netbeans,java,eclipse,intellij,visualstudiocode
-# Edit at https://www.toptal.com/developers/gitignore?templates=netbeans,java,eclipse,intellij,visualstudiocode
+desktop.ini
+!Bibliotecas/*.jar
+
+# Created by https://www.toptal.com/developers/gitignore/api/java,eclipse,intellij,netbeans,visualstudiocode
+# Edit at https://www.toptal.com/developers/gitignore?templates=java,eclipse,intellij,netbeans,visualstudiocode
 
 ### Eclipse ###
 .metadata
@@ -194,7 +197,6 @@ fabric.properties
 .mtj.tmp/
 
 # Package Files #
-*.7z
 *.jar
 *.war
 *.nar
@@ -236,7 +238,4 @@ nbdist/
 .history
 .ionide
 
-# End of https://www.toptal.com/developers/gitignore/api/netbeans,java,eclipse,intellij,visualstudiocode
-biblioteca*/
-lib/
-library/
+# End of https://www.toptal.com/developers/gitignore/api/java,eclipse,intellij,netbeans,visualstudiocode
