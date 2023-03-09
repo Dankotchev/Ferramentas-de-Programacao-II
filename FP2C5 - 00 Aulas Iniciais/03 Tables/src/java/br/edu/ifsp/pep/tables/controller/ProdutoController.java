@@ -2,14 +2,15 @@ package br.edu.ifsp.pep.tables.controller;
 
 import br.edu.ifsp.pep.tables.model.Produto;
 import jakarta.annotation.PostConstruct;
-import jakarta.enterprise.context.RequestScoped;
+import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Named
-@RequestScoped
-public class ProdutoController {
+@SessionScoped
+public class ProdutoController implements Serializable{
 
     private List<Produto> listaProduto;
     private Produto produtoSelecionado;
@@ -76,8 +77,21 @@ public class ProdutoController {
         listaProduto.add(new Produto(1028, "tx125ck42", "Yoga Mat", "Descrição do Produto", "yoga-mat.jpg", 20,
                 "Fitness", 15, 5));
         listaProduto.add(new Produto(1029, "gwuby345v", "Yoga Set", "Descrição do Produto", "yoga-set.jpg", 20,
-                "Fitness", 25, 8));
+                "Fitness", 25, 5));
     }
+    
+    public void exibir(){
+        System.out.println(produtoSelecionado.getName());
+    }
+    
+    public void remover(){
+        listaProduto.remove(produtoSelecionado);
+    }
+    
+//    public void linhaSelecionada(SelectEvent<Produto> event){
+//        FacesMessage msg = new FacesMessage("Product Selected", String.valueOf(event.getObject().getId()));
+//        FacesContext.getCurrentInstance().addMessage(null, msg);
+//    }
     
     //
     public List<Produto> getListaProduto() {

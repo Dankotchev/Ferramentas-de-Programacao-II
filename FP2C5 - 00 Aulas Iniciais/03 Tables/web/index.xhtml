@@ -15,11 +15,23 @@
         <h1>Usando Tabelas</h1>
         <div>
             <h:form>
-<!--                    id="singleDT" 
-                    selectionMode="single"
-                    selection="#{produtoController.produtoSelecionado}"
-                    rowKey="#{produto.id}"-->
+                <!--Criando um botão para exibir as informações no console-->
+                <p:commandButton value="Exibir"
+                                 action="#{produtoController.exibir}"/>
+
+                <!--Inserir um excluir, mudando o escopo para Session-->
+                <p:commandButton value="remover"
+                                 action="#{produtoController.remover}"
+                                 update="tabela" 
+                                 styleClass="ui-button-danger" 
+                                 icon="pi pi-times">
+                    <p:confirm header="Confirmação" 
+                               message="Tem certeza que quer apagar esses registro?" 
+                               icon="pi pi-info-circle"/>
+                </p:commandButton>
+
                 <p:dataTable 
+                    id="tabela"
                     var="produto" 
                     value="#{produtoController.listaProduto}"
                     rows="5"
@@ -27,87 +39,76 @@
                     paginatorPosition="top"
                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                     currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} registros"
-                    rowsPerPageTemplate="5, 7,{ShowAll|'Todos'}">
+                    rowsPerPageTemplate="5, 7, 9, 13, {ShowAll|'Todos'}"
+                    reflow="true"
+                    selectionMode="single"
+                    selection="#{produtoController.produtoSelecionado}"
+                    rowKey="#{produto.id}">
+
+                    <!--Cria um mensagem de notificação ao selecionar um produto-->
+                    <!--<p:ajax event="rowSelect" listener="#{dtSelectionView.linhaSelecionada}" update=":form:msgs"/>-->
+                    <!--<p:ajax event="rowUnselect" listener="#{dtSelectionView.linhaDeselecionada}" update=":form:msgs"/>-->
 
 
                     <f:facet name="header">
                         Tabela de Produtos
                     </f:facet>
 
-                    <p:column headerText="Codigo">
+                    <p:column headerText="Codigo"
+                              field="code"
+                              responsivePriority="5">
                         <h:outputText value="#{produto.code}"/>
                     </p:column>    
 
-                    <p:column headerText="Nome">
+                    <p:column headerText="Nome"
+                              field="name"
+                              filterMatchMode="contains">
                         <h:outputText value="#{produto.name}"/>
                     </p:column>    
 
-                    <p:column headerText="Descrição">
+                    <p:column headerText="Descrição"
+                              field="description"
+                              responsivePriority="5">
                         <h:outputText value="#{produto.description}"/>
                     </p:column>    
 
-                    <p:column headerText="Preço">
+                    <p:column headerText="Preço"
+                              field="price"
+                              filterMatchMode="gt"
+                              converter="jakarta.faces.Double"
+                              responsivePriority="2">
                         <h:outputText value="#{produto.price}"/>
                     </p:column>    
 
-                    <p:column headerText="Categoria">
+                    <p:column headerText="Categoria"
+                              field="category"
+                              filterMatchMode="contains"
+                              responsivePriority="5">
                         <h:outputText value="#{produto.category}"/>
                     </p:column>    
 
-                    <p:column headerText="Quantidade">
+                    <p:column headerText="Quantidade"
+                              responsivePriority="5">
                         <h:outputText value="#{produto.quantity}"/>
                     </p:column>    
 
-                    <p:column headerText="Avaliação">
+                    <p:column headerText="Avaliação"
+                              sortBy="#{produto.rating}"
+                              filterBy="#{produto.rating}"
+                              filterMatchMode="gte"
+                              converter="jakarta.faces.Integer"
+                              responsivePriority="3">
                         <h:outputText value="#{produto.rating}"/>
                     </p:column>    
 
-<!--                    <f:facet name="footer">
-                        <p:commandButton process="singleDT" update=":form:productDetail" icon="pi pi-search"
-                                         value="View"
-                                         oncomplete="PF('productDialog').show()"/>
-                    </f:facet>-->
-
                 </p:dataTable>
 
+                <!--Caixa de dialogo confirmando uma ação-->
+                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350">
+                    <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no ui-button-flat"/>
+                    <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" />
+                </p:confirmDialog>
 
-
-
-
-                <p:dialog header="Product Info" widgetVar="productDialog" modal="true" showEffect="fade"
-                          hideEffect="fade" resizable="false">
-                    <p:outputPanel id="productDetail" style="text-align:center;">
-                        <p:column rendered="#{not empty produtoController.produtoSelecionado}">
-                            <div class="product">
-                                <div class="product-grid-item card" style="margin-bottom: 0">
-                                    <div class="product-grid-item-top">
-                                        <div>
-                                            <i class="pi pi-tag product-category-icon"/>
-                                            <span class="product-category">#{produtoController.produtoSelecionado.category}</span>
-                                        </div>
-                                        <span class="product-badge status-#{produtoController.produtoSelecionado.inventoryStatus.name().toLowerCase()}">#{produtoController.produtoSelecionado.inventoryStatus.text}</span>
-                                    </div>
-                                    <div class="product-grid-item-content">
-                                        <div class="product-name">#{produtoController.produtoSelecionado.name}</div>
-                                        <div class="product-description">#{produtoController.produtoSelecionado.description}</div>
-                                        <p:rating readonly="true" value="#{produtoController.produtoSelecionado.rating}"/>
-                                    </div>
-                                    <div class="product-grid-item-bottom">
-                                        <h:outputText value="#{produtoController.produtoSelecionado.price}"
-                                                      styleClass="product-price">
-                                            <f:convertNumber currencySymbol="$" type="currency"/>
-                                        </h:outputText>
-                                        <p:commandButton value="Add To Cart" icon="pi pi-shopping-cart"
-                                                         >
-                                            <f:setPropertyActionListener value="#{produtoController.produtoSelecionado}"
-                                                                         target="#{produtoController.produtoSelecionado}"/>
-                                        </p:commandButton>
-                                    </div>
-                                </div>
-                            </div>
-                        </p:column>
-                    </p:outputPanel>
-                </p:dialog>
             </h:form>
 
         </div>
