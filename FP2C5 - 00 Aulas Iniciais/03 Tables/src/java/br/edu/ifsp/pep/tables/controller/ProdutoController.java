@@ -1,5 +1,7 @@
 package br.edu.ifsp.pep.tables.controller;
 
+
+
 import br.edu.ifsp.pep.tables.model.Produto;
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.SessionScoped;
