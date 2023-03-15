@@ -1,24 +1,51 @@
 package br.edu.ifsp.pep.tables.model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import java.io.Serializable;
 
+@Entity
+@Table(name = "produto")
 public class Produto implements Serializable{
 
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    
+    @Column(name = "code", length = 20, nullable = false)
     private String code;
+    
+    @Column(name = "name", length = 40, nullable = false)
     private String name;
+    
+    @Column(name = "description", length = 100, nullable = false)
     private String description;
+    
+    @Column(name = "image", length = 100, nullable = false)
     private String image;
+    
+    @Column(name = "price", precision = 8, scale = 2, nullable = false)
     private double price;
+    
+    @Column(name = "category", length = 40, nullable = false)
     private String category;
-    private int quantity;
-    private int rating;
+    
+    @Column(name = "quantity", nullable = false)
+    private Integer quantity;
+    
+    @Column(name = "rating", nullable = false)
+    private Integer rating;
 
     //
     public Produto() {
     }
 
-    public Produto(int id, String code, String name, String description, String image, double price, String category, int quantity, int rating) {
+    public Produto(int id, String code, String name, String description, String image, double price, String category, Integer quantity, Integer rating) {
         this.id = id;
         this.code = code;
         this.name = name;
@@ -86,19 +113,19 @@ public class Produto implements Serializable{
         this.category = category;
     }
 
-    public int getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 
-    public int getRating() {
+    public Integer getRating() {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(Integer rating) {
         this.rating = rating;
     }
 

@@ -88,11 +88,11 @@ public class ProdutoController implements Serializable{
         listaProduto.remove(produtoSelecionado);
     }
     
-//    public void linhaSelecionada(SelectEvent<Produto> event){
-//        FacesMessage msg = new FacesMessage("Product Selected", String.valueOf(event.getObject().getId()));
-//        FacesContext.getCurrentInstance().addMessage(null, msg);
-//    }
-    
+    // Levando diretamente para a home usando atributo action
+    public String gotHome(){
+        return "/index";
+    }
+       
     //
     public List<Produto> getListaProduto() {
         return listaProduto;

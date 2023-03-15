@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <title>Tabelas</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta charset="UTF-8"/>
+    </h:head>
+
+    <h:body>
+        <h1>Usando Tabelas</h1>
+        <div>
+            <h:form id="formProduto">
+                <!--Criando um menuBar para a página-->
+                <p:menubar>
+                    <p:menuitem value="Home"
+                                action="#{produtoController.gotHome}"
+                                icon="pi pi-home"/>
+                    <p:menuitem value="Produtos"
+                                outcome="/produto/listaProduto"
+                                icon="pi pi-list"/>     
+                </p:menubar>
+
+
+                <!--Criando um botão para exibir as informações no console-->
+                <p:commandButton value="Exibir"
+                                 styleClass="ui-button-raised ui-button-flat"
+                                 action="#{produtoController.exibir}"/>
+
+                
+                <!--Inserir um excluir, mudando o escopo para Session-->
+                <p:commandButton value="Remover"
+                                 id="btnRemover"
+                                 action="#{produtoController.remover}"
+                                 disabled="#{produtoController.produtoSelecionado == null}"
+                                 update="tabela"
+                                 styleClass="ui-button-raised ui-button-danger ui-button-flat">
+
+                    <p:confirm header="Confirmação" 
+                               message="Tem certeza que quer apagar esses registro?" 
+                               icon="pi pi-info-circle"/>
+
+                </p:commandButton>
+                
+
+                <p:dataTable 
+                    id="tabela"
+                    var="produto" 
+                    value="#{produtoController.listaProduto}"
+                    rows="5"
+                    paginator="true" 
+                    paginatorPosition="top"
+                    paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                    currentPageReportTemplate="{startRecord} - {endRecord} de {totalRecords} registros"
+                    rowsPerPageTemplate="5, 7, 9, 13, {ShowAll|'Todos'}"
+                    reflow="true"
+                    selectionMode="single"
+                    selection="#{produtoController.produtoSelecionado}"
+                    rowKey="#{produto.id}">
+
+                    <p:ajax event="rowSelect" update=":formProduto:btnRemover"/>
+
+                    <f:facet name="header">
+                        Tabela de Produtos
+                    </f:facet>
+
+                    <p:column headerText="Codigo"
+                              field="code"
+                              responsivePriority="5">
+                        <h:outputText value="#{produto.code}"/>
+                    </p:column>    
+
+                    <p:column headerText="Nome"
+                              field="name"
+                              filterMatchMode="contains">
+                        <h:outputText value="#{produto.name}"/>
+                    </p:column>    
+
+                    <p:column headerText="Descrição"
+                              field="description"
+                              responsivePriority="5">
+                        <h:outputText value="#{produto.description}"/>
+                    </p:column>    
+
+                    <p:column headerText="Preço"
+                              field="price"
+                              filterMatchMode="gt"
+                              converter="jakarta.faces.Double"
+                              responsivePriority="2">
+                        <h:outputText value="#{produto.price}"/>
+                    </p:column>    
+
+                    <p:column headerText="Categoria"
+                              field="category"
+                              filterMatchMode="contains"
+                              responsivePriority="5">
+                        <h:outputText value="#{produto.category}"/>
+                    </p:column>    
+
+                    <p:column headerText="Quantidade"
+                              responsivePriority="5">
+                        <h:outputText value="#{produto.quantity}"/>
+                    </p:column>    
+
+                    <p:column headerText="Avaliação"
+                              sortBy="#{produto.rating}"
+                              filterBy="#{produto.rating}"
+                              filterMatchMode="gte"
+                              converter="jakarta.faces.Integer"
+                              responsivePriority="3">
+                        <h:outputText value="#{produto.rating}"/>
+                    </p:column>    
+
+                </p:dataTable>
+
+                <!--Caixa de dialogo confirmando uma ação-->
+                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350">
+                    <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no ui-button-flat ui-button-raised"/>
+                    <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes ui-button-raised" />
+                </p:confirmDialog>
+
+            </h:form>
+
+        </div>
+
+
+    </h:body>
+
+</html>
