@@ -26,7 +26,7 @@ public class Produto implements Serializable{
     @Column(name = "description", length = 100, nullable = false)
     private String description;
     
-    @Column(name = "image", length = 100, nullable = false)
+    @Column(name = "image", length = 100, nullable = true)
     private String image;
     
     @Column(name = "price", precision = 8, scale = 2, nullable = false)

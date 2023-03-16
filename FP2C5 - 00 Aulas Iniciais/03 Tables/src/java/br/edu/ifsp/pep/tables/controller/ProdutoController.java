@@ -1,9 +1,9 @@
 package br.edu.ifsp.pep.tables.controller;
 
-
-
 import br.edu.ifsp.pep.tables.model.Produto;
+import br.edu.ifsp.pep.tables.services.ProdutoDAO;
 import jakarta.annotation.PostConstruct;
+import jakarta.ejb.EJB;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 import java.io.Serializable;
@@ -12,10 +12,15 @@ import java.util.List;
 
 @Named
 @SessionScoped
-public class ProdutoController implements Serializable{
+public class ProdutoController implements Serializable {
+
+    // Servidor responsável por instanciar o DAO
+    @EJB
+    private ProdutoDAO produtoDAO;
 
     private List<Produto> listaProduto;
     private Produto produtoSelecionado;
+    private Produto produtoInserir;
 
     @PostConstruct
     public void init() {
@@ -80,21 +85,34 @@ public class ProdutoController implements Serializable{
                 "Fitness", 15, 5));
         listaProduto.add(new Produto(1029, "gwuby345v", "Yoga Set", "Descrição do Produto", "yoga-set.jpg", 20,
                 "Fitness", 25, 5));
+
+        inserirProduto();
+    }
+
+    private void inserirProduto() {
+        for (Produto produto : listaProduto) {
+            produtoDAO.inserir(produto);
+        }
     }
     
-    public void exibir(){
+    public void cadastrarProduto(){
+        produtoDAO.inserir(produtoInserir);
+        this.produtoInserir = null;
+    }
+    
+    public void exibir() {
         System.out.println(produtoSelecionado.getName());
     }
-    
-    public void remover(){
+
+    public void remover() {
         listaProduto.remove(produtoSelecionado);
     }
-    
+
     // Levando diretamente para a home usando atributo action
-    public String gotHome(){
+    public String gotHome() {
         return "/index";
     }
-       
+
     //
     public List<Produto> getListaProduto() {
         return listaProduto;
@@ -111,5 +129,12 @@ public class ProdutoController implements Serializable{
     public void setProdutoSelecionado(Produto produtoSelecionado) {
         this.produtoSelecionado = produtoSelecionado;
     }
-    
+
+    public Produto getProdutoInserir() {
+        return produtoInserir;
+    }
+
+    public void setProdutoInserir(Produto produtoInserir) {
+        this.produtoInserir = produtoInserir;
+    }
 }
