@@ -19,13 +19,17 @@
                     <p:menuitem value="Home"
                                 outcome="/index"
                                 icon="pi pi-home"/>
-                    <p:menuitem value="Produtos"
-                                outcome="/produto/listaProduto"
-                                icon="pi pi-list"/>
-                    <p:menuitem value="Cadastro"
-                                outcome="/produto/inserirProduto"/>
-                    <p:menuitem value="Login"
-                                icon="pi pi-sign-in"/>
+                    
+                    <p:submenu label="Produtos">
+                        
+                        <p:menuitem value="Listagem"
+                                    outcome="/produto/lista"
+                                    icon="pi pi-list"/>
+                        <p:menuitem value="Novo"
+                                    outcome="/produto/inserir"
+                                    icon="pi pi-plus"/>
+                        
+                    </p:submenu>
                 </p:menubar>
                 
             </h:form>

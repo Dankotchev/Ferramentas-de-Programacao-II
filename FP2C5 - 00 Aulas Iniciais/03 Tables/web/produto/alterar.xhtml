@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <title>Cadastro de Produto</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    
+    <body>
+        <h1>Cadastro de Produto</h1>
+        <div>
+            <h:form>
+
+                <p:menubar>
+                    <p:menuitem value="Home"
+                                outcome="/index"
+                                icon="pi pi-home"/>
+                    
+                    <p:submenu label="Produtos">
+                        
+                        <p:menuitem value="Listagem"
+                                    outcome="/produto/lista"
+                                    icon="pi pi-list"/>
+                        <p:menuitem value="Novo"
+                                    outcome="/produto/inserir"
+                                    icon="pi pi-plus"/>
+                        
+                    </p:submenu>
+                </p:menubar>
+
+                <p:panelGrid columns="2">
+
+                    <f:facet name="header">
+                        <h4>Produto</h4>
+                    </f:facet>
+
+                    <p:outputLabel for="name" value="Nome"/>
+                    <p:inputText id="name"
+                                 value="#{produtoController.produtoSelecionado.name}"/>
+
+                    <p:outputLabel for="code" value="Código"/>
+                    <p:inputText id="code"
+                                 value="#{produtoController.produtoSelecionado.code}"/>
+
+                    <p:outputLabel for="description" value="Descrição"/>
+                    <p:inputText id="description"
+                                 value="#{produtoController.produtoSelecionado.description}"/>
+
+                    <p:outputLabel for="price" value="Preço"/>
+                    <p:inputNumber id="price"
+                                   decimalPlaces="2" 
+                                   value="#{produtoController.produtoSelecionado.price}"/>
+
+                    <p:outputLabel for="category" value="Categoria"/>
+                    <p:inputText id="category"
+                                 value="#{produtoController.produtoSelecionado.category}"/>
+
+                    <p:outputLabel for="quantity" value="Quantidade"/>
+                    <p:inputNumber id="quantity"
+                                   minValue="0" 
+                                   decimalPlaces="0"
+                                   value="#{produtoController.produtoSelecionado.quantity}"/>
+
+                    <p:outputLabel for="rating" value="Avaliação"/>
+                    <p:rating id="rating"
+                              stars="10"
+                              value="#{produtoController.produtoSelecionado.rating}"/>
+
+                    <f:facet name="footer">
+                        <p:commandButton value="Alterar"
+                                         style="margin: 0 auto; display: block;"
+                                         action="#{produtoController.alterarProduto}"/>
+                    </f:facet>
+
+                </p:panelGrid>
+            </h:form>
+        </div>
+    </body>
+</html>

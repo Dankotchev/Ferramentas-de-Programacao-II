@@ -5,10 +5,11 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <head>
+    <h:head>
         <title>Cadastro de Produto</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
+    </h:head>
+    
     <body>
         <h1>Cadastro de Produto</h1>
         <div>
@@ -18,55 +19,68 @@
                     <p:menuitem value="Home"
                                 outcome="/index"
                                 icon="pi pi-home"/>
-                    <p:menuitem value="Produtos"
-                                outcome="/produto/listaProduto"
-                                icon="pi pi-list"/>
-                    <p:menuitem value="Cadastro"
-                                outcome="/produto/inserirProduto"/>
-                    <p:menuitem value="Login"
-                                icon="pi pi-sign-in"/>
+                    
+                    <p:submenu label="Produtos">
+                        
+                        <p:menuitem value="Listagem"
+                                    outcome="/produto/lista"
+                                    icon="pi pi-list"/>
+                        <p:menuitem value="Novo"
+                                    outcome="/produto/inserir"
+                                    icon="pi pi-plus"/>
+                        
+                    </p:submenu>
                 </p:menubar>
 
                 <p:panelGrid columns="2">
 
                     <f:facet name="header">
-                        <h4>Produto</h4>
+                        Produto
                     </f:facet>
 
                     <p:outputLabel for="name" value="Nome"/>
                     <p:inputText id="name"
-                                 value="#{produtoController.produtoInserir.name}"/>
+                                 value="#{produtoController.produtoInserir.name}"
+                                 autocomplete="false"/>
 
                     <p:outputLabel for="code" value="Código"/>
                     <p:inputText id="code"
-                                 value="#{produtoController.produtoInserir.code}"/>
+                                 value="#{produtoController.produtoInserir.code}"
+                                 autocomplete="false"/>
 
                     <p:outputLabel for="description" value="Descrição"/>
                     <p:inputText id="description"
-                                 value="#{produtoController.produtoInserir.description}"/>
+                                 value="#{produtoController.produtoInserir.description}"
+                                 autocomplete="false"/>
 
                     <p:outputLabel for="price" value="Preço"/>
                     <p:inputNumber id="price"
-                                   decimalPlaces="2" 
-                                   value="#{produtoController.produtoInserir.price}"/>
+                                   decimalPlaces="2"
+                                   minValue="0"
+                                   value="#{produtoController.produtoInserir.price}"
+                                   autocomplete="false"/>
 
-                    <p:outputLabel for="category" value="Categoriaquantity"/>
+                    <p:outputLabel for="category" value="Categoria"/>
                     <p:inputText id="category"
-                                 value="#{produtoController.produtoInserir.category}"/>
+                                 value="#{produtoController.produtoInserir.category}"
+                                 autocomplete="false"/>
 
                     <p:outputLabel for="quantity" value="Quantidade"/>
                     <p:inputNumber id="quantity"
                                    minValue="0" 
                                    decimalPlaces="0"
-                                   value="#{produtoController.produtoInserir.quantity}"/>
+                                   value="#{produtoController.produtoInserir.quantity}"
+                                   autocomplete="false"/>
 
                     <p:outputLabel for="rating" value="Avaliação"/>
-                    <p:rating id="nome"
+                    <p:rating id="rating" stars="10"
                               value="#{produtoController.produtoInserir.rating}"/>
 
                     <f:facet name="footer">
                         <p:commandButton value="Cadastrar"
-                                         action="#{produtoController.cadastrarProduto}"/>
+                                         style="margin: 0 auto; display: block;"
+                                         action="#{produtoController.cadastrarProduto}"
+                                         update="@form"/>
                     </f:facet>
 
                 </p:panelGrid>

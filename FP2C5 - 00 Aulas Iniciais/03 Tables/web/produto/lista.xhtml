@@ -18,11 +18,19 @@
                 <!--Criando um menuBar para a página-->
                 <p:menubar>
                     <p:menuitem value="Home"
-                                action="#{produtoController.gotHome}"
+                                outcome="/index"
                                 icon="pi pi-home"/>
-                    <p:menuitem value="Produtos"
-                                outcome="/produto/listaProduto"
-                                icon="pi pi-list"/>     
+                    
+                    <p:submenu label="Produtos">
+                        
+                        <p:menuitem value="Listagem"
+                                    outcome="/produto/lista"
+                                    icon="pi pi-list"/>
+                        <p:menuitem value="Novo"
+                                    outcome="/produto/inserir"
+                                    icon="pi pi-plus"/>
+                        
+                    </p:submenu>
                 </p:menubar>
 
 
@@ -51,12 +59,12 @@
                     id="tabela"
                     var="produto" 
                     value="#{produtoController.listaProduto}"
-                    rows="5"
+                    rows="15"
                     paginator="true" 
-                    paginatorPosition="top"
+                    paginatorPosition="bottom"
                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                     currentPageReportTemplate="{startRecord} - {endRecord} de {totalRecords} registros"
-                    rowsPerPageTemplate="5, 7, 9, 13, {ShowAll|'Todos'}"
+                    rowsPerPageTemplate="5, 15, 30, 60, {ShowAll|'Todos'}"
                     reflow="true"
                     selectionMode="single"
                     selection="#{produtoController.produtoSelecionado}"
@@ -102,7 +110,8 @@
                     </p:column>    
 
                     <p:column headerText="Quantidade"
-                              responsivePriority="5">
+                              responsivePriority="5"
+                              field="quantity">
                         <h:outputText value="#{produto.quantity}"/>
                     </p:column>    
 
@@ -112,7 +121,9 @@
                               filterMatchMode="gte"
                               converter="jakarta.faces.Integer"
                               responsivePriority="3">
-                        <h:outputText value="#{produto.rating}"/>
+                        <p:rating value="#{produto.rating}"
+                                  readonly="true"
+                                  stars="10"/>
                     </p:column>    
 
                 </p:dataTable>
