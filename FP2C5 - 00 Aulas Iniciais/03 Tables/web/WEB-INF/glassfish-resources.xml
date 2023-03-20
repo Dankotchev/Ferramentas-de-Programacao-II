@@ -7,7 +7,7 @@
         <property name="databaseName" value="produto"/>
         <property name="User" value="root"/>
         <property name="Password" value=""/>
-        <property name="URL" value="jdbc:mysql://localhost:3306/produto?useSSL=false"/>
+        <property name="URL" value="jdbc:mysql://localhost:3306/produto?useSSL=false&amp;allowPublicKeyRetrieval=true&amp;createDatabaseIfNotExist=true&amp;serverTimezone=UTC&amp;serverTimezone=America/Sao_Paulo"/>
         <property name="driverClass" value="com.mysql.cj.jdbc.Driver"/>
     </jdbc-connection-pool>
     <jdbc-resource enabled="true" jndi-name="java:app/jdbc/produto" object-type="user" pool-name="mysql_produto_rootPool"/>
