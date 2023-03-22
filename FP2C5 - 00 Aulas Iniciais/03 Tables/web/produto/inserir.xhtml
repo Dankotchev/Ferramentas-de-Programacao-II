@@ -14,6 +14,8 @@
         <h1>Cadastro de Produto</h1>
         <div>
             <h:form>
+                
+                <p:growl id="growl" showDetail="true" showSummary="false"/>
 
                 <p:menubar>
                     <p:menuitem value="Home"
@@ -41,28 +43,36 @@
                     <p:outputLabel for="name" value="Nome"/>
                     <p:inputText id="name"
                                  value="#{produtoController.produtoInserir.name}"
+                                 required="true"
+                                 requiredMessage="Informe o Nome"
                                  autocomplete="false"/>
 
                     <p:outputLabel for="code" value="Código"/>
                     <p:inputText id="code"
                                  value="#{produtoController.produtoInserir.code}"
+                                 required="true"
                                  autocomplete="false"/>
 
                     <p:outputLabel for="description" value="Descrição"/>
                     <p:inputText id="description"
                                  value="#{produtoController.produtoInserir.description}"
+                                 required="true"
                                  autocomplete="false"/>
 
                     <p:outputLabel for="price" value="Preço"/>
                     <p:inputNumber id="price"
+                                   symbol="R$ "
+                                   symbolPosition="p"
                                    decimalPlaces="2"
                                    minValue="0"
                                    value="#{produtoController.produtoInserir.price}"
+                                   required="true"
                                    autocomplete="false"/>
 
                     <p:outputLabel for="category" value="Categoria"/>
                     <p:inputText id="category"
                                  value="#{produtoController.produtoInserir.category}"
+                                 required="true"
                                  autocomplete="false"/>
 
                     <p:outputLabel for="quantity" value="Quantidade"/>
@@ -70,17 +80,20 @@
                                    minValue="0" 
                                    decimalPlaces="0"
                                    value="#{produtoController.produtoInserir.quantity}"
+                                   required="true"
                                    autocomplete="false"/>
 
                     <p:outputLabel for="rating" value="Avaliação"/>
-                    <p:rating id="rating" stars="10"
+                    <p:rating id="rating"
+                              stars="10"
+                              required="true"
                               value="#{produtoController.produtoInserir.rating}"/>
 
                     <f:facet name="footer">
                         <p:commandButton value="Cadastrar"
                                          style="margin: 0 auto; display: block;"
                                          action="#{produtoController.cadastrarProduto}"
-                                         update="@form"/>
+                                         update="growl, @form"/>
                     </f:facet>
 
                 </p:panelGrid>

@@ -54,6 +54,15 @@
 
                 </p:commandButton>
                 
+                <!--Testar ainda-->
+                <p:commandButton value="Alterar"
+                                 action="#{produtoController.gotoAlterar}"
+                                 disabled="#{produtoController.produtoSelecionado == null}"
+                                 id="btnAlterar"
+                                 styleClass="ui-button-raised ui-button-flat">           
+                </p:commandButton>
+                                 
+                
 
                 <p:dataTable 
                     id="tabela"

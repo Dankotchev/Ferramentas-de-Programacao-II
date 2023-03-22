@@ -4,6 +4,7 @@ import br.edu.ifsp.pep.tables.model.Produto;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import java.util.List;
 
 // O sevidor conseguir injetar uma instnância dessa classe (Objeto sem estado)
 @Stateless
@@ -22,6 +23,11 @@ public class ProdutoDAO {
     
     public void remover(Produto produto){
         this.em.remove(this.em.merge(produto));
+    }
+    
+    public List<Produto> buscarTodos(){
+       return em.createQuery("SELECT p FROM Produto p", Produto.class)
+               .getResultList();
     }
 
 }
