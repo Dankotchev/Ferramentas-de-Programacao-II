@@ -38,8 +38,11 @@ public class ProdutoController implements Serializable {
         System.out.println(produtoSelecionado.getName());
     }
 
-    public void remover () {
-        listaProduto.remove(produtoSelecionado);
+    public void removerProduto() {
+        this.produtoDAO.remover(produtoSelecionado);
+        this.produtoSelecionado = null;
+        this.listaProduto = null;   // Para atualizar a lista de produtos
+        Mensagem.info("Produto removido");
     }
 
     public List<Produto> getListaProduto () {
@@ -49,11 +52,7 @@ public class ProdutoController implements Serializable {
         }
         return listaProduto;
     }
-    
-    public String gotoAlterar(){
-        return "/produto/alterar";
-    }
-    
+       
     //
     public void setListaProduto (List<Produto> listaProduto) {
         this.listaProduto = listaProduto;

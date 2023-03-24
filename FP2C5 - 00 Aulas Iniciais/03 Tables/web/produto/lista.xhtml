@@ -43,7 +43,7 @@
                 <!--Inserir um excluir, mudando o escopo para Session-->
                 <p:commandButton value="Remover"
                                  id="btnRemover"
-                                 action="#{produtoController.remover}"
+                                 action="#{produtoController.removerProduto}"
                                  disabled="#{produtoController.produtoSelecionado == null}"
                                  update="tabela"
                                  styleClass="ui-button-raised ui-button-danger ui-button-flat">
@@ -56,7 +56,7 @@
                 
                 <!--Testar ainda-->
                 <p:commandButton value="Alterar"
-                                 action="#{produtoController.gotoAlterar}"
+                                 action="/produto/alterar"
                                  disabled="#{produtoController.produtoSelecionado == null}"
                                  id="btnAlterar"
                                  styleClass="ui-button-raised ui-button-flat">           
@@ -79,7 +79,10 @@
                     selection="#{produtoController.produtoSelecionado}"
                     rowKey="#{produto.id}">
 
-                    <p:ajax event="rowSelect" update=":formProduto:btnRemover"/>
+                    <p:ajax event="rowSelect"
+                            update=":formProduto:btnRemover :formProduto:btnAlterar"/>
+                    <p:ajax event="rowUnselect"
+                            update=":formProduto:btnRemover :formProduto:btnAlterar"/>
 
                     <f:facet name="header">
                         Tabela de Produtos
