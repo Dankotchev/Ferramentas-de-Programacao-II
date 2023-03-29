@@ -4,27 +4,24 @@ public class Calculadora {
 
     private double numero1;
     private double numero2;
+    private double resultado;
     private String operador;
 
-    public double calcular() throws Exception {
-        double resultado = 0.0;
+    public void calcular() {
         switch (operador) {
             case "+":
-                resultado = numero1 + numero2;
+                this.resultado = this.numero1 + this.numero2;
                 break;
             case "-":
-                resultado = numero1 - numero2;
+                this.resultado = this.numero1 - this.numero2;
                 break;
             case "/":
-                resultado = numero1 / numero2;
+                this.resultado = this.numero1 / this.numero2;
                 break;
             case "*":
-                resultado = numero1 * numero2;
+                this.resultado = this.numero1 * this.numero2;
                 break;
-            default:
-                throw new AssertionError();
         }
-        return resultado;
     }
 
     //
@@ -61,4 +58,11 @@ public class Calculadora {
         this.operador = operador;
     }
 
+    public double getResultado() {
+        return resultado;
+    }
+
+    public void setResultado(double resultado) {
+        this.resultado = resultado;
+    }
 }

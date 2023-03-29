@@ -2,17 +2,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"          
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Funcionários</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta charset="UTF-8"/>
     </h:head>
+
     <h:body>
+
         <div>
             <h1>Funcionários</h1>
+
             <h:form>
+
                 <p:menubar>
                     <p:menuitem value="Calculadora"
                                 icon="pi pi-calculator"
@@ -34,15 +37,14 @@
                              currentPageReportTemplate="Mostrando {startRecord}-{endRecord} de {totalRecords} registros">
 
                     <p:column headerText="Nome" field="nome" filterMatchMode="contains"/>
-                    <h:outputText value="#{funcionario.nome}"/>
 
-                    <p:column headerText="Salário" field="salario" converter="jakarta.faces.Double"/>
-                    <h:outputText value="#{funcionario.salario}"/>
-
+                    <p:column headerText="Salário" converter="jakarta.faces.Double">
+                        <h:outputText value="R$ #{funcionario.salario}"/>
+                    </p:column>
 
                 </p:dataTable>
+
             </h:form>
         </div>
-
     </h:body>
 </html>

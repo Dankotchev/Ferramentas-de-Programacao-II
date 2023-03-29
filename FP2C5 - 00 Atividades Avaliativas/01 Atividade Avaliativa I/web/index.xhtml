@@ -10,10 +10,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta charset="UTF-8"/>
     </h:head>
+
     <h:body>
+
         <div>
             <h1>Calculadora</h1>
+
             <h:form>
+
                 <p:growl id="growl" showDetail="true" showSummary="false"/>
                 <p:focus context="panel"/>
 
@@ -29,15 +33,15 @@
                 <p:panelGrid columns="2" id="panel">
                     <p:outputLabel for="numero1" value="Número 1"/>
                     <p:inputNumber id="numero1" value="#{calculadoraController.calculadora.numero1}"
-                                   required="true" requiredMessage="Informe o número 1"/>
+                                   required="true" requiredMessage="Informe o número 1" title="Informe um valor"/>
 
                     <p:outputLabel for="numero2" value="Número 2"/>
                     <p:inputNumber id="numero2" value="#{calculadoraController.calculadora.numero2}"
-                                   required="true" requiredMessage="Informe o número 2"/>
+                                   required="true" requiredMessage="Informe o número 2" title="Informe um valor"/>
 
-                    <p:outputLabel for="numero1" value="Operador"/>
+                    <p:outputLabel for="operador" value="Operador"/>
                     <p:inputText id="operador" value="#{calculadoraController.calculadora.operador}"
-                                 required="true" requiredMessage="Informe um operador válido">
+                                 required="true" requiredMessage="Informe um operador válido" title="Informe um operador">
                         <f:validateLength maximum="1"/>
                     </p:inputText>
 
@@ -46,13 +50,12 @@
                                      update="@form"/>
 
                     <p:outputLabel for="resultado" value="Resultado"/>
-                    <p:inputNumber id="resultado" value="#{calculadoraController.resultado}"
-                                   readonly="true"/>
-
+                    <p:inputNumber id="resultado" value="#{calculadoraController.calculadora.resultado}"
+                                   readonly="true" title="Resultado da operação"/>
 
                 </p:panelGrid>
+
             </h:form>
         </div>
-
     </h:body>
 </html>

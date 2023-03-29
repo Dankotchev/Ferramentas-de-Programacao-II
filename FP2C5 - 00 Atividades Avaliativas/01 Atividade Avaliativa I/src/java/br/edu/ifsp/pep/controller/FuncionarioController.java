@@ -10,27 +10,23 @@ import java.util.List;
 
 @Named
 @SessionScoped
-public class FuncionarioController implements Serializable{
+public class FuncionarioController implements Serializable {
 
-    private List<Funcionario> listaFuncionario = new ArrayList<>();
+    private final List<Funcionario> listaFuncionario = new ArrayList<>();
 
     @PostConstruct
     public void init() {
         for (int i = 1; i < 51; i++) {
-            Funcionario criar = new Funcionario("Funcionário " + i, 1000.00 + (25 * i));
-            this.listaFuncionario.add(criar);
+            Funcionario novoFuncionario = new Funcionario("Funcionário " + i, 1000.00 + (25 * i));
+            this.listaFuncionario.add(novoFuncionario);
         }
     }
-    
+
     //
     public FuncionarioController() {
     }
 
     public List<Funcionario> getListaFuncionario() {
         return listaFuncionario;
-    }
-
-    public void setListaFuncionario(List<Funcionario> listaFuncionario) {
-        this.listaFuncionario = listaFuncionario;
     }
 }

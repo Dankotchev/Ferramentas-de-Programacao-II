@@ -45,3 +45,5 @@
 ![Captura de tela 2023-03-23 - 07.43.50.png](https://images2.imgbox.com/2e/bd/aBvp9rv8_o.png)
 
 ![Captura de tela 2023-03-23 - 07.43.33.png](https://images2.imgbox.com/92/94/DEauWR9U_o.png)
+
+>Feedback do professor: - Não validou os operadores. - O atributo resultado da classe CalculadoraController deveria estar na classe calculadora. - Não funcionou a implementação de validação por zero. - O escopo da classe CalculadoraController está errado. - Ao clicar no label Operador, o focus está sendo direcionado para o componente errado. - Nome de variável incorreto: Funcionario criar. - Não deveria existir o método setListaFuncionario na classe FuncionarioController. - Linhas 37 e 40, do arquivo List.xhtml, são desnecessárias
