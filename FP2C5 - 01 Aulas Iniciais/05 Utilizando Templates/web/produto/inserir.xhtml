@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="./../WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        Inserir Produto
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form>
+            <p:growl id="growl" showDetail="true" showSummary="false"/>
+            <p:panelGrid columns="2">
+
+                <f:facet name="header">
+                    Produto
+                </f:facet>
+
+                <p:outputLabel for="name" value="Nome"/>
+                <p:inputText id="name"
+                             value="#{produtoController.produtoInserir.name}"
+                             required="true"
+                             requiredMessage="Informe o Nome"
+                             autocomplete="false"/>
+
+                <p:outputLabel for="code" value="Código"/>
+                <p:inputText id="code"
+                             value="#{produtoController.produtoInserir.code}"
+                             required="true"
+                             autocomplete="false"/>
+
+                <p:outputLabel for="description" value="Descrição"/>
+                <p:inputText id="description"
+                             value="#{produtoController.produtoInserir.description}"
+                             required="true"
+                             autocomplete="false"/>
+
+                <p:outputLabel for="price" value="Preço"/>
+                <p:inputNumber id="price"
+                               symbol="R$ "
+                               symbolPosition="p"
+                               decimalPlaces="2"
+                               minValue="0"
+                               value="#{produtoController.produtoInserir.price}"
+                               required="true"
+                               autocomplete="false"/>
+
+                <p:outputLabel for="category" value="Categoria"/>
+                <p:inputText id="category"
+                             value="#{produtoController.produtoInserir.category}"
+                             required="true"
+                             autocomplete="false"/>
+
+                <p:outputLabel for="quantity" value="Quantidade"/>
+                <p:inputNumber id="quantity"
+                               minValue="0" 
+                               decimalPlaces="0"
+                               value="#{produtoController.produtoInserir.quantity}"
+                               required="true"
+                               autocomplete="false"/>
+
+                <p:outputLabel for="rating" value="Avaliação"/>
+                <p:rating id="rating"
+                          stars="10"
+                          required="true"
+                          value="#{produtoController.produtoInserir.rating}"/>
+
+                <f:facet name="footer">
+                    <p:commandButton value="Cadastrar"
+                                     style="margin: 0 auto; display: block;"
+                                     action="#{produtoController.cadastrarProduto}"
+                                     update="growl, @form"/>
+                </f:facet>
+
+            </p:panelGrid>
+        </h:form>
+        
+    </ui:define>
+
+</ui:composition>

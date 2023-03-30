@@ -7,9 +7,12 @@
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <h:outputStylesheet name="./css/default.css"/>
-        <h:outputStylesheet name="./css/cssLayout.css"/>
-        <title>Facelets Template</title>
+        <h:outputStylesheet name="/css/default.css"/>
+        <h:outputStylesheet name="/css/cssLayout.css"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>
+            <ui:insert name="title">Facelets Templates</ui:insert>
+        </title>
     </h:head>
 
     <h:body>
@@ -20,23 +23,21 @@
                     <p:menuitem value="Home"
                                 outcome="/index"
                                 icon="pi pi-home"/>
-                    
+
                     <p:submenu label="Produtos">
-                        
+
                         <p:menuitem value="Listagem"
-                                    outcome="/produto/lista"
                                     icon="pi pi-list"/>
                         <p:menuitem value="Novo"
-                                    outcome="/produto/inserir"
                                     icon="pi pi-plus"/>
-                        
+
                     </p:submenu>
                 </p:menubar>
             </ui:insert>
         </div>
 
         <div id="content" class="center_content">
-            <ui:insert name="content">Content</ui:insert>
+            <ui:insert name="content">Conteúdo</ui:insert>
         </div>
 
         <div id="bottom">
