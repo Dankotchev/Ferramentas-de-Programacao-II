@@ -52,5 +52,5 @@ public class Pessoa {
 
     public Pessoa(Integer id) {
         this.id = id;
-    }   
+    }
 }
