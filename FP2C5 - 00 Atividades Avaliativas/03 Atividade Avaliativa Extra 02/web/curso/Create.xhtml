@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"          
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="./../WEB-INF/Template.xhtml">
+
+    <ui:define name="title">
+        Cadastro de Cursos
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form id="formCadastro">
+
+            <p:growl id="growl" showDetail="true" showSummary="false"/>
+            <p:focus context="panel"/>
+
+            <p:panelGrid columns="2" id="panel">
+                <p:outputLabel for="@next" value="Nome do Curso"/>
+                <p:inputText id="nome"
+                             value="#{cursoController.cursoInserir.nome}"
+                             required="true"
+                             requiredMessage="Informe um nome ao curso"
+                             autocomplete="false"/>
+
+                <p:outputLabel for="@next" value="Identificador do Curso"/>
+                <p:inputText id="identificador"
+                             value="#{cursoController.cursoInserir.identificador}"
+                             required="true"
+                             requiredMessage="Informe um identificador ao curso"
+                             autocomplete="false"/>
+
+
+                <p:outputLabel for="@next" value="Duração"/>
+                <p:selectOneMenu id="duracao"
+                                 value="#{cursoController.cursoInserir.duracao}"
+                                 required="true"
+                                 requiredMessage="Selecione uma duração válida (20,40 ou 80 horas)">
+
+                    <f:selectItem itemLabel="20 horas" itemValue="20"/>
+                    <f:selectItem itemLabel="40 horas" itemValue="40"/>
+                    <f:selectItem itemLabel="80 horas" itemValue="80"/>  
+
+                </p:selectOneMenu>
+
+
+                <p:outputLabel for="@next" value="Data de Início"/>
+                <p:datePicker id="dataInicio"
+                              value="#{cursoController.cursoInserir.dataInicio}"
+                              required="true"
+                              requiredMessage="Informe uma data de início para o Curso"
+                              title="Informe uma senha"
+                              mindate="#{cursoController.dataAtual}"/>
+
+
+                <p:outputLabel for="@next" value="Data de Término"/>
+                <p:datePicker id="dataFim"
+                              value="#{cursoController.cursoInserir.dataFim}"
+                              mindate="#{cursoController.dataAtual}"/>
+
+
+                <f:facet name="footer">
+                    <p:commandButton value="Cadastrar"
+                                     action="#{cursoController.cadastrarCurso}"
+                                     update="@form"
+                                     style="margin: 0 auto; display: block;"/>
+                </f:facet>
+
+            </p:panelGrid>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
