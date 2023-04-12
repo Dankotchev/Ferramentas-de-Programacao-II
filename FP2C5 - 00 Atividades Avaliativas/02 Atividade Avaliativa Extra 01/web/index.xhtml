@@ -16,28 +16,32 @@
 
             <p:growl id="growl" showDetail="true" showSummary="false"/>
             <p:focus context="panel"/>
+            
+            <div align="center">
 
-            <p:panelGrid columns="2" id="panel">
-                <p:outputLabel for="@next" value="Login"/>
-                <p:inputText id="login" value="#{pessoaController.usuario.login}"
-                               required="true"
-                               requiredMessage="Informe um login para continuar"
-                               title="Informe um login"
-                               autocomplete="false"/>
+                <p:panelGrid columns="2" id="panel" layout="tabular">
+                    <p:outputLabel for="@next" value="Login"/>
+                    <p:inputText id="login" value="#{pessoaController.usuario.login}"
+                                 required="true"
+                                 requiredMessage="Informe um login para continuar"
+                                 title="Informe um login"
+                                 autocomplete="false"/>
 
-                <p:outputLabel for="@next" value="Senha"/>
-                <p:password id="senha" value="#{pessoaController.usuario.senha}"
-                               required="true" requiredMessage="Informe um senha" title="Informe uma senha"/>
+                    <p:outputLabel for="@next" value="Senha"/>
+                    <p:password id="senha" value="#{pessoaController.usuario.senha}"
+                                required="true" requiredMessage="Informe um senha" title="Informe uma senha"/>
 
 
-                <f:facet name="footer">
-                    <p:commandButton value="Acessar"
-                                     action="#{pessoaController.login}"
-                                     update="@form"
-                                     style="margin: 0 auto; display: block;"/>
-                </f:facet>
+                    <f:facet name="footer">
+                        <p:commandButton value="Acessar"
+                                         action="#{pessoaController.login}"
+                                         update="@form"
+                                         style="margin: 0 auto; display: block;"/>
+                    </f:facet>
 
-            </p:panelGrid>
+                </p:panelGrid>
+            </div>
+            
         </h:form>
     </ui:define>
 
