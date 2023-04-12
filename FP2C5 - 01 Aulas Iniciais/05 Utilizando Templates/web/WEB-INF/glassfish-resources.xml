@@ -6,7 +6,7 @@
         <property name="portNumber" value="3306"/>
         <property name="databaseName" value="produto"/>
         <property name="User" value="root"/>
-        <property name="Password" value=""/>
+        <property name="Password" value="ifsp"/>
         <property name="URL" value="jdbc:mysql://localhost:3306/produto?useSSL=false"/>
         <property name="driverClass" value="com.mysql.cj.jdbc.Driver"/>
     </jdbc-connection-pool>
