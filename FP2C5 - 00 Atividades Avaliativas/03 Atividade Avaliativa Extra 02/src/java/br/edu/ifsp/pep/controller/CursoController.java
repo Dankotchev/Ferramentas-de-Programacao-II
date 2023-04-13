@@ -3,18 +3,18 @@ package br.edu.ifsp.pep.controller;
 import br.edu.ifsp.pep.model.Curso;
 import br.edu.ifsp.pep.services.CursoDAO;
 import jakarta.ejb.EJB;
-import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Named;
 import java.io.Serializable;
 import java.util.Date;
 import util.Mensagem;
 
 @Named
-@ApplicationScoped
+@RequestScoped
 public class CursoController implements Serializable {
 
     @EJB
-    private final CursoDAO cursoDAO = new CursoDAO();
+    private CursoDAO cursoDAO;
     private Curso cursoInserir = new Curso();
     private Date dataAtual = new Date();
 
@@ -23,7 +23,7 @@ public class CursoController implements Serializable {
             this.cursoDAO.inserir(this.cursoInserir);
             this.cursoInserir = new Curso();
             Mensagem.info("Curso cadastrado com sucesso");
-        } else
+        } else 
             Mensagem.error("Data de término anterior a data de início");
     }
 

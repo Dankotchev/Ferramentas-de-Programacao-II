@@ -12,63 +12,98 @@
     </ui:define>
 
     <ui:define name="content">
+
+        <script>
+            PrimeFaces.locales['pt'] = {
+                closeText: 'Fechar',
+                prevText: 'Anterior',
+                nextText: 'Seguinte',
+                monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+                monthNamesShort: ['Jan', 'Feb', 'Mar', 'Abr', 'Maio', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                dayNames: ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'],
+                dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
+                dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
+                weekHeader: 'Semana',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: '',
+                timeOnlyTitle: 'Apenas Hora',
+                timeText: 'Tempo',
+                hourText: 'Hora',
+                minuteText: 'Minuto',
+                secondText: 'Segundo',
+                millisecondText: 'Milisegundo',
+                currentText: 'Data atual',
+                ampm: false,
+                month: 'Mes',
+                week: 'Semana',
+                day: 'Dia',
+                allDayText: 'Todo os dias',
+                today: 'Hoje',
+                clear: 'Limpar'
+            };
+        </script>
+
         <h:form id="formCadastro">
 
             <p:growl id="growl" showDetail="true" showSummary="false"/>
             <p:focus context="panel"/>
 
-            <p:panelGrid columns="2" id="panel">
-                <p:outputLabel for="@next" value="Nome do Curso"/>
-                <p:inputText id="nome"
-                             value="#{cursoController.cursoInserir.nome}"
-                             required="true"
-                             requiredMessage="Informe um nome ao curso"
-                             autocomplete="false"/>
+            <div align="center">
 
-                <p:outputLabel for="@next" value="Identificador do Curso"/>
-                <p:inputText id="identificador"
-                             value="#{cursoController.cursoInserir.identificador}"
-                             required="true"
-                             requiredMessage="Informe um identificador ao curso"
-                             autocomplete="false"/>
-
-
-                <p:outputLabel for="@next" value="Duração"/>
-                <p:selectOneMenu id="duracao"
-                                 value="#{cursoController.cursoInserir.duracao}"
+                <p:panelGrid columns="2" id="panel">
+                    <p:outputLabel for="@next" value="Nome do Curso"/>
+                    <p:inputText value="#{cursoController.cursoInserir.nome}"
                                  required="true"
-                                 requiredMessage="Selecione uma duração válida (20,40 ou 80 horas)">
+                                 requiredMessage="Informe um nome ao curso"
+                                 autocomplete="false"/>
 
-                    <f:selectItem itemLabel="20 horas" itemValue="20"/>
-                    <f:selectItem itemLabel="40 horas" itemValue="40"/>
-                    <f:selectItem itemLabel="80 horas" itemValue="80"/>  
-
-                </p:selectOneMenu>
-
-
-                <p:outputLabel for="@next" value="Data de Início"/>
-                <p:datePicker id="dataInicio"
-                              value="#{cursoController.cursoInserir.dataInicio}"
-                              required="true"
-                              requiredMessage="Informe uma data de início para o Curso"
-                              title="Informe uma senha"
-                              mindate="#{cursoController.dataAtual}"/>
+                    <p:outputLabel for="@next" value="Identificador do Curso"/>
+                    <p:inputText value="#{cursoController.cursoInserir.identificador}"
+                                 required="true"
+                                 requiredMessage="Informe um identificador ao curso"
+                                 autocomplete="false"/>
 
 
-                <p:outputLabel for="@next" value="Data de Término"/>
-                <p:datePicker id="dataFim"
-                              value="#{cursoController.cursoInserir.dataFim}"
-                              mindate="#{cursoController.dataAtual}"/>
+                    <p:outputLabel for="@next" value="Duração"/>
+                    <p:selectOneMenu value="#{cursoController.cursoInserir.duracao}"
+                                     required="true"
+                                     requiredMessage="Selecione uma duração válida (20,40 ou 80 horas)">
+
+                        <f:selectItem itemLabel="20 horas" itemValue="20"/>
+                        <f:selectItem itemLabel="40 horas" itemValue="40"/>
+                        <f:selectItem itemLabel="80 horas" itemValue="80"/>  
+
+                    </p:selectOneMenu>
 
 
-                <f:facet name="footer">
-                    <p:commandButton value="Cadastrar"
-                                     action="#{cursoController.cadastrarCurso}"
-                                     update="@form"
-                                     style="margin: 0 auto; display: block;"/>
-                </f:facet>
+                    <p:outputLabel for="@next" value="Data de Início"/>
+                    <p:datePicker value="#{cursoController.cursoInserir.dataInicio}"
+                                  required="true"
+                                  requiredMessage="Informe uma data de início para o Curso"
+                                  title="Informe uma data de início"
+                                  locale="pt"
+                                  mindate="#{cursoController.dataAtual}"
+                                  showIcon="true"/>
 
-            </p:panelGrid>
+
+                    <p:outputLabel for="@next" value="Data de Término"/>
+                    <p:datePicker locale="pt"
+                                  value="#{cursoController.cursoInserir.dataFim}"
+                                  mindate="#{cursoController.dataAtual}"
+                                  showIcon="true"/>
+
+
+                    <f:facet name="footer">
+                        <p:commandButton value="Cadastrar"
+                                         action="#{cursoController.cadastrarCurso}"
+                                         update="@form"
+                                         style="margin: 0 auto; display: block;"/>
+                    </f:facet>
+
+                </p:panelGrid>
+            </div>
         </h:form>
     </ui:define>
 
