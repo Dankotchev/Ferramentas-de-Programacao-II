@@ -1,10 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                xmlns:h="http://xmlns.jcp.org/jsf/html"          
-                xmlns:p="http://primefaces.org/ui"
-                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"          
                 template="./WEB-INF/template.xhtml">
 
     <ui:define name="title">
@@ -15,54 +12,9 @@
         <h1>
             Seja bem vindo
         </h1>
-        <h3>Calculadora</h3>
-
-        <h:form id="formulario">
-
-            <p:growl />
-
-            <ui:remove>
-                <div align="center">
-
-                    <p:panelGrid columns="5">
-
-                        <p:inputText value="#{calculadoraController.valorA}"/>
-                        +
-                        <p:inputText value="#{calculadoraController.valorB}"/>
-                        =
-                        <p:outputLabel value="#{calculadoraController.resultado}"/>
-
-                        <f:facet name="footer">
-                            <p:commandButton value="Somar"
-                                             action="#{calculadoraController.somar}"/>
-                        </f:facet>
-
-                    </p:panelGrid>
-                </div>
-            </ui:remove>
+        <h3></h3>
 
 
-
-
-
-
-            <div align="center">
-
-                <h:inputText id="valorA"
-                             size="12"
-                             value="#{calculadoraController.valorA}" />
-                +
-                <h:inputText id="valorB"
-                             size="12"
-                             value="#{calculadoraController.valorB}" />
-                =
-                <h:outputText value="#{calculadoraController.resultado}" />
-                <br />
-                <h:commandButton value="Somar"
-                                 action="#{calculadoraController.somar}" />
-
-            </div>
-        </h:form>
     </ui:define>
 
 </ui:composition>

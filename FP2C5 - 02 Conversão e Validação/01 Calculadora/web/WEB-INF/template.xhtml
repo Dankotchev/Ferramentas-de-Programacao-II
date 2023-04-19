@@ -21,6 +21,15 @@
                     <p:menuitem value="Home"
                                 outcome="/index"
                                 icon="pi pi-home"/>
+                    
+                    <p:submenu label="Calculadora" icon="pi pi-calculator">
+                        <p:menuitem value="Números"
+                                    outcome="/calculadora/calcularNumeros"
+                                    icon="pi pi-calculator"/>
+                        <p:menuitem value="Datas"
+                                    outcome="/calculadora/calcularDatas"
+                                    icon="pi pi-calendar-plus"/>
+                    </p:submenu>
                 </p:menubar>
             </h:form>
         </ui:insert>

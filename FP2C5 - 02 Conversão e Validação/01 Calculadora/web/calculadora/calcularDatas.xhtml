@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"          
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="./../WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        Calculadora de Datas
+    </ui:define>
+
+    <ui:define name="content">
+        <h1>
+            Seja bem vindo
+        </h1>
+        <h3></h3>
+
+        <h:form id="frm">
+
+            <p:growl showDetail="true" showSummary="false" />
+
+            <h:inputText id="dataBase"
+                         size="12"
+                         value="#{calculadoraDataController.dataBase}">
+                <f:convertDateTime pattern="dd/MM/yyyy"
+                                   type="localDate"/>
+            </h:inputText>
+
+            +
+            <h:inputText id="dias"
+                         size="12"
+                         value="#{calculadoraDataController.dias}"/>
+
+            dias =
+            <h:outputText value="#{calculadoraDataController.resultado}">
+                <f:convertDateTime dateStyle="full"
+                                   locale="pt_BR"/>
+            </h:outputText>
+
+            </br>
+            <h:commandButton value="Adicionar"
+                             action="#{calculadoraDataController.adicionar}" />
+            
+        </h:form>
+    </ui:define>
+
+</ui:composition>

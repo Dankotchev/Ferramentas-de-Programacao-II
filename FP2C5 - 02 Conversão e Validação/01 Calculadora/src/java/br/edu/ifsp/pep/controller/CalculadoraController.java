@@ -10,6 +10,7 @@ public class CalculadoraController {
     private Double valorA;
     private Double valorB;
     private Double resultado;
+    private String nome;
 
     public void somar() {
         this.resultado = this.valorA + this.valorB;
@@ -38,5 +39,13 @@ public class CalculadoraController {
 
     public void setResultado(Double resultado) {
         this.resultado = resultado;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 }

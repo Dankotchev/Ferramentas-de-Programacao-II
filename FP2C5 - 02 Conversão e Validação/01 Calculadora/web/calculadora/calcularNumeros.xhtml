@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"          
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="./../WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        Calculadora
+    </ui:define>
+
+    <ui:define name="content">
+        <h1>
+
+        </h1>
+        <h3>Calculadora</h3>
+
+        <h:form id="formulario">
+
+            <p:growl />
+
+            <div align="center">
+
+                <p:panelGrid columns="5">
+
+                    <p:inputText id="valorA"
+                                 value="#{calculadoraController.valorA}"
+                                 required="true"
+                                 label="valor A">
+
+                        <f:convertNumber minFractionDigits="2"
+                                         locale="pt_BR"/>
+                    </p:inputText>
+                    +
+                    <p:inputText id="valorB"
+                                 value="#{calculadoraController.valorB}"
+                                 required="true"
+                                 label="Valor B">
+
+                        <f:convertNumber minFractionDigits="2"
+                                         locale="pt_BR"/>
+                    </p:inputText>
+                    
+                    =
+
+                    <h:panelGroup rendered="#{calculadoraController.resultado != null}">
+                        
+                        <p:outputLabel value="#{calculadoraController.nome}, o resultado é "/>
+                        <p:outputLabel value="#{calculadoraController.resultado}" />
+                        </br>
+                        
+                    </h:panelGroup>
+
+                    <p:outputLabel id="resultado"
+                                   value="#{calculadoraController.resultado}">
+                        <f:convertNumber type="currency"
+                                         locale="pt_BR"/>
+                    </p:outputLabel>
+
+                    <p:outputLabel value="Seu nome: "/>
+                    <p:inputText id="nome"
+                                 label="Seu nome"
+                                 required="true">
+                        <f:validateLength minimum="3"
+                                          maximum="15"/>
+                    </p:inputText>
+
+                    <f:facet name="footer">
+                        <p:commandButton value="Somar"
+                                         action="#{calculadoraController.somar}"
+                                         update="@form"
+                                         style="margin: 0 auto; display: block;"/>
+                    </f:facet>
+
+                </p:panelGrid>
+            </div>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
