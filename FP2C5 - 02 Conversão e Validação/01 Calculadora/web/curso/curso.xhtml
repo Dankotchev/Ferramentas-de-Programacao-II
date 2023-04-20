@@ -22,15 +22,21 @@
             <p:growl showDetail="true" showSummary="false" />
 
             <h:outputLabel value="Curso"/>
-            <p:selectOneMenu value="#{cursoController.curso}"
+            <p:selectOneMenu value="#{cursoController.cursoSelecionado}"
                              converter="cursoConveter">
                 <f:selectItems value="#{cursoController.retonarTodos()}"/>
-            </p:selectOneMenu>
-            
+            </p:selectOneMenu>  
+
 
             <h:commandButton value="Adicionar"
                              action="#{cursoController.teste}" />
-            
+            <br/>
+
+            <h:panelGroup rendered="#{cursoController.cursoSelecionado != null}">
+                <h:outputLabel value="Selecionado: #{cursoController.cursoSelecionado}"/>
+
+            </h:panelGroup>
+
         </h:form>
     </ui:define>
 

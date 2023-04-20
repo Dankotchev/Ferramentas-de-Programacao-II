@@ -59,11 +59,11 @@ public class CursoController implements Serializable {
         this.dataAtual = dataAtual;
     }
 
-    public Curso getCurso() {
+    public Curso getCursoSelecionado() {
         return cursoSelecionado;
     }
 
-    public void setCurso(Curso curso) {
-        this.cursoSelecionado = curso;
+    public void setCursoSelecionado(Curso cursoSelecionado) {
+        this.cursoSelecionado = cursoSelecionado;
     }
 }

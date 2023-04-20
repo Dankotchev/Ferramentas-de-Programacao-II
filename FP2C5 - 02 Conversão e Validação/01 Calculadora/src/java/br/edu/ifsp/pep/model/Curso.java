@@ -91,52 +91,28 @@ public class Curso implements Serializable {
     public void setDataFim(Date dataFim) {
         this.dataFim = dataFim;
     }
-
+    
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 17 * hash + Objects.hashCode(this.id);
-        hash = 17 * hash + Objects.hashCode(this.identificador);
-        hash = 17 * hash + Objects.hashCode(this.nome);
-        hash = 17 * hash + Objects.hashCode(this.duracao);
-        hash = 17 * hash + Objects.hashCode(this.dataInicio);
-        hash = 17 * hash + Objects.hashCode(this.dataFim);
+        int hash = 5;
+        hash = 89 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
+        if (this == obj)
             return true;
-        }
-        if (obj == null) {
+        if (obj == null)
             return false;
-        }
-        if (getClass() != obj.getClass()) {
+        if (getClass() != obj.getClass())
             return false;
-        }
         final Curso other = (Curso) obj;
-        if (!Objects.equals(this.identificador, other.identificador)) {
-            return false;
-        }
-        if (!Objects.equals(this.nome, other.nome)) {
-            return false;
-        }
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        if (!Objects.equals(this.duracao, other.duracao)) {
-            return false;
-        }
-        if (!Objects.equals(this.dataInicio, other.dataInicio)) {
-            return false;
-        }
-        return Objects.equals(this.dataFim, other.dataFim);
+        return Objects.equals(this.id, other.id);
     }
 
     @Override
     public String toString() {
         return String.valueOf(id);
-    }
-    
+    }   
 }
