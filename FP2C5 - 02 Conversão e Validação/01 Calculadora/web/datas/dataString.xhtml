@@ -23,10 +23,8 @@
 
             <h:inputText id="dataBase"
                          size="12"
-                         value="#{calculadoraDataController.dataBase}">
-                <f:convertDateTime pattern="dd/MM/yyyy"
-                                   type="localDate"/>
-            </h:inputText>
+                         value="#{calculadoraDataController.dataBase}"
+                         converter="smartDate"/>
 
             +
             <h:inputText id="dias"
@@ -36,10 +34,11 @@
             dias =
             <h:outputText value="#{calculadoraDataController.resultado}">
                 <f:convertDateTime dateStyle="full"
+                                   type="localDate"
                                    locale="pt_BR"/>
             </h:outputText>
 
-            </br>
+            <br/>
             <h:commandButton value="Adicionar"
                              action="#{calculadoraDataController.adicionar}" />
             

@@ -22,13 +22,24 @@
                                 outcome="/index"
                                 icon="pi pi-home"/>
                     
-                    <p:submenu label="Calculadora" icon="pi pi-calculator">
-                        <p:menuitem value="Números"
-                                    outcome="/calculadora/calcularNumeros"
-                                    icon="pi pi-calculator"/>
-                        <p:menuitem value="Datas"
-                                    outcome="/calculadora/calcularDatas"
+                    <p:menuitem value="Calculadora"
+                                outcome="/calculadora/calcularNumeros"
+                                icon="pi pi-calculator"/>
+                    
+                    <p:submenu label="Datas" icon="pi pi-calculator">
+                        <p:menuitem value="Data 1"
+                                    outcome="/datas/dataInteiro"
                                     icon="pi pi-calendar-plus"/>
+                        
+                        <p:menuitem value="Data 2 - Conversão"
+                                    outcome="/datas/dataString"
+                                    icon="pi pi-calendar-plus"/>
+                    </p:submenu>
+                    
+                    <p:submenu label="Curso">
+                        <p:menuitem value="Curso"
+                                    outcome="/curso/curso"
+                                    icon="pi pi-plus"/>
                     </p:submenu>
                 </p:menubar>
             </h:form>
