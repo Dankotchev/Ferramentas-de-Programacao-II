@@ -113,6 +113,6 @@ public class Curso implements Serializable {
 
     @Override
     public String toString() {
-        return String.valueOf(id);
-    }   
+        return "nome: " + nome + ", duracao: " + duracao + ", dataInicio: " + dataInicio;
+    }  
 }
