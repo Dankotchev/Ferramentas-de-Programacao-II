@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Menu</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta charset="UTF-8"/>
+    </h:head>
+
+    <h:body>
+        <h1>Usando Componente Menu</h1>
+        <div>
+            <h:form>
+                <!--Criando um menuBar para a página-->
+                <p:menubar>
+                    <p:menuitem value="Home"
+                                outcome="/index"
+                                icon="pi pi-home"/>
+                    
+                    <p:submenu label="Produtos">
+                        
+                        <p:menuitem value="Listagem"
+                                    outcome="/produto/lista"
+                                    icon="pi pi-list"/>
+                        <p:menuitem value="Novo"
+                                    outcome="/produto/inserir"
+                                    icon="pi pi-plus"/>
+                        
+                    </p:submenu>
+                </p:menubar>
+                
+            </h:form>
+
+        </div>
+
+
+    </h:body>
+
+</html>
