@@ -6,8 +6,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.NamedQueries;
-import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.io.Serializable;
@@ -17,9 +15,6 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "categoria")
-//@NamedQueries({
-//    @NamedQuery(name = "buscarPorNome", query = "SELECT c FROM Categoria c WHERE c.nome_categoria = :nome")
-//})
 public class Categoria implements Serializable{
 
     @Id
@@ -51,6 +46,14 @@ public class Categoria implements Serializable{
         this.nome = nome;
     }
 
+    public List<Produto> getProdutos() {
+        return produtos;
+    }
+
+    public void setProdutos(List<Produto> produtos) {
+        this.produtos = produtos;
+    }
+
     @Override
     public int hashCode() {
         int hash = 7;
@@ -72,5 +75,4 @@ public class Categoria implements Serializable{
         final Categoria other = (Categoria) obj;
         return Objects.equals(this.id, other.id);
     }
-    
 }

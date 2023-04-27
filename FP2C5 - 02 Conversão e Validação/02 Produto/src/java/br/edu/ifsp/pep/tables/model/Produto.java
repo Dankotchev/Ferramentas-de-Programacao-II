@@ -1,5 +1,6 @@
 package br.edu.ifsp.pep.tables.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -37,7 +38,7 @@ public class Produto implements Serializable{
     @Column(name = "avaliacao", nullable = false)
     private Integer rating;
     
-    @ManyToOne()
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "id_categoria")
     private Categoria categoria;
 

@@ -9,7 +9,7 @@
         <title>Cadastro de Produto</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
-    
+
     <body>
         <h1>Cadastro de Produto</h1>
         <div>
@@ -19,16 +19,16 @@
                     <p:menuitem value="Home"
                                 outcome="/index"
                                 icon="pi pi-home"/>
-                    
+
                     <p:submenu label="Produtos">
-                        
+
                         <p:menuitem value="Listagem"
                                     outcome="/produto/lista"
                                     icon="pi pi-list"/>
                         <p:menuitem value="Novo"
                                     outcome="/produto/inserir"
                                     icon="pi pi-plus"/>
-                        
+
                     </p:submenu>
                 </p:menubar>
 
@@ -45,6 +45,15 @@
                     <p:outputLabel for="code" value="Código"/>
                     <p:inputText id="code"
                                  value="#{produtoController.produtoSelecionado.code}"/>
+
+                    <p:outputLabel for="@next" value="Categoria"/>
+                    <p:selectOneMenu value="#{produtoController.produtoSelecionado.categoria}"
+                                     converter="categoriaConveter">
+
+                        <f:selectItems value="#{categoriaController.buscarTodos()}"
+                                       var="item"
+                                       itemLabel="#{item.nome}"/>                                   
+                    </p:selectOneMenu>
 
                     <p:outputLabel for="description" value="Descrição"/>
                     <p:inputText id="description"

@@ -32,10 +32,4 @@ public class CategoriaDAO {
     public Categoria buscarPorId(Integer id) {
         return em.find(Categoria.class, id);
     }
-    
-    public Categoria buscarPorNome(String nome){
-        return em.createNamedQuery("buscarPorNome", Categoria.class)
-                .setParameter("nome", nome)
-                .getSingleResult();                
-    }
 }

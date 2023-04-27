@@ -102,9 +102,9 @@
 
                     <p:column headerText="Categoria"
                               field="categoria"
-                              responsivePriority="5">
-                        <h:outputText value="#{produto.description}"
-                                      converter="categoriaConveter"/>
+                              responsivePriority="5"
+                              converter="categoriaConveter">
+                        <h:outputText value="#{produto.categoria.nome}"/>
                     </p:column>    
 
                     <p:column headerText="Descrição"

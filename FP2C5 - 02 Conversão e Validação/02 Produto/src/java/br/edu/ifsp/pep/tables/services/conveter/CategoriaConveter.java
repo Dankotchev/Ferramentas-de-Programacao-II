@@ -21,14 +21,13 @@ public class CategoriaConveter implements Converter<Categoria>{
                 .get();
         
         return categoriaDAO.buscarPorId(Integer.valueOf(valorString));
-//        return categoriaDAO.buscarPorNome(valorString);
         }
 
     @Override
     public String getAsString(FacesContext context, UIComponent component, Categoria categoria) {
         if (categoria == null) return null;
         
-        return categoria.getNome();
+        return categoria.getId().toString();
     }
 
 }
