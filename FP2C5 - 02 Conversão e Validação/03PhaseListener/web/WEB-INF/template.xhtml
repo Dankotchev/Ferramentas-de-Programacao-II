@@ -9,7 +9,10 @@
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <title>Facelets Template</title>
+                
+        <title>
+            <ui:insert name="title"></ui:insert>
+        </title>
     </h:head>
 
     <h:body>
@@ -18,12 +21,8 @@
                  showSummary="false"
                  showDetail="true"/>
 
-        <ui:insert name="title">
-            <title></title>
-        </ui:insert>
-
         <ui:insert name="top">
-            <h:form>
+            <h:form id="formMenu">
 
                 <p:menubar>
                     <p:menuitem value="Home" 
@@ -32,29 +31,24 @@
 
                     <p:menuitem value="Folha de Pagamento"
                                 action="/financeiro/folhaPagamento"
-                                icon="pi pi-money-bill"/>
+                                icon="pi pi-money-bill"
+                                rendered="#{pessoaController.verificarTipo1()}"/>
 
                     <p:menuitem value="Login"
-                                action="login"
-                                icon="pi pi-home" />
+                                action="/login"
+                                icon="pi pi-power-off" />
 
                     <f:facet name="options">
-                        <h:outputText value="#{pessoaController.pessoAutenticada.login}"/>
+                        <p:outputLabel value="#{pessoaController.pessoaAutenticada.login}"/>
                     </f:facet>
 
                 </p:menubar>
-
             </h:form>                
-
         </ui:insert>
-
 
 
         <ui:insert name="content">
             Conteúdo do Template
         </ui:insert>
-
-
     </h:body>
-
 </html>

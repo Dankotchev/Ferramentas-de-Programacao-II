@@ -23,14 +23,21 @@ public class PessoaController implements Serializable {
     }
 
     public void autenticar() {
-        pessoaAutenticada = pessoaDAO
+        this.pessoaAutenticada = pessoaDAO
                 .buscarPorLoginSenha(pessoa.getLogin(), pessoa.getSenha());
-        if (pessoaAutenticada != null)
+        if (this.pessoaAutenticada != null)
             Mensagem.info("Usuário autenticado.");
         else {
             Mensagem.error("Login ou Senha inválidos.");
         }
         this.pessoa = new Pessoa();
+    }
+    
+    public boolean verificarTipo1 (){
+        if (this.pessoaAutenticada != null 
+                && this.pessoaAutenticada.getTipo().equals("1")) 
+            return true;
+        return false;
     }
 
     //

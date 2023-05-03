@@ -30,15 +30,11 @@ public class Autorizacao implements PhaseListener {
             System.out.println("Redirecionando...");
             try {
                 facesContext.getExternalContext()
-                        .redirect("/03%20Phase%20Listener/index.xhtml");
+                        .redirect("/03PhaseListener/index.xhtml");
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-
-//        HttpServletRequest request = (HttpServletRequest) facesContext
-//                .getExternalContext()
-//                .getRequest();
     }
 
     @Override
