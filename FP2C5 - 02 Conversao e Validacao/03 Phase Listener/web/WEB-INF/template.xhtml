@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -13,6 +14,14 @@
 
     <h:body>
 
+        <p:growl id="growl"
+                 showSummary="false"
+                 showDetail="true"/>
+
+        <ui:insert name="title">
+            <title></title>
+        </ui:insert>
+
         <ui:insert name="top">
             <h:form>
 
@@ -20,6 +29,18 @@
                     <p:menuitem value="Home" 
                                 action="/index"
                                 icon="pi pi-home" />
+
+                    <p:menuitem value="Folha de Pagamento"
+                                action="/financeiro/folhaPagamento"
+                                icon="pi pi-money-bill"/>
+
+                    <p:menuitem value="Login"
+                                action="login"
+                                icon="pi pi-home" />
+
+                    <f:facet name="options">
+                        <h:outputText value="#{pessoaController.pessoAutenticada.login}"/>
+                    </f:facet>
 
                 </p:menubar>
 
