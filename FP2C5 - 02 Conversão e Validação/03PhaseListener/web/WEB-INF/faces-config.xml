@@ -29,5 +29,13 @@
             br.edu.ifsp.pep.listener.Autorizacao
         </phase-listener>
     </lifecycle>
+    
+    <!--"Regra de navegação" para redirecionar para a página de erro-->
+    <navigation-rule>
+       <navigation-case>
+           <from-outcome>erro</from-outcome>
+           <to-view-id>erro.xhtml</to-view-id>
+       </navigation-case>
+    </navigation-rule>
 
 </faces-config>
