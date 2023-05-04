@@ -1,4 +1,4 @@
-package br.edu.ifsp.pep.dao;
+package br.edu.ifsp.pep.service.dao;
 
 import br.edu.ifsp.pep.model.Pessoa;
 import jakarta.ejb.Stateless;

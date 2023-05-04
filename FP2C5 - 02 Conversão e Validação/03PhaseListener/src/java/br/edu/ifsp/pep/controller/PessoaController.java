@@ -1,6 +1,6 @@
 package br.edu.ifsp.pep.controller;
 
-import br.edu.ifsp.pep.dao.PessoaDAO;
+import br.edu.ifsp.pep.service.dao.PessoaDAO;
 import br.edu.ifsp.pep.model.Pessoa;
 import java.io.Serializable;
 import jakarta.enterprise.context.SessionScoped;

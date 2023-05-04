@@ -9,7 +9,7 @@
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-                
+
         <title>
             <ui:insert name="title"></ui:insert>
         </title>
@@ -33,6 +33,19 @@
                                 action="/financeiro/folhaPagamento"
                                 icon="pi pi-money-bill"
                                 rendered="#{pessoaController.verificarTipo1()}"/>
+
+                    <p:submenu label="Pessoal"
+                               icon="pi pi-user"
+                               rendered="#{pessoaController.pessoaAutenticada != null}">
+
+                        <p:menuitem value="Lista de Pessoal"
+                                    action="/pessoal/lista"
+                                    icon="pi pi-users"/>
+
+                        <p:menuitem value="Cadastro de Pessoa"
+                                    action="/pessoal/cadsatrar"
+                                    icon="pi pi-user-plus"/>
+                    </p:submenu>
 
                     <p:menuitem value="Login"
                                 action="/login"

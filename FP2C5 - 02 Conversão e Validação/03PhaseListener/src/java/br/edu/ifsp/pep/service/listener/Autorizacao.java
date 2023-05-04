@@ -1,4 +1,4 @@
-package br.edu.ifsp.pep.listener;
+package br.edu.ifsp.pep.service.listener;
 
 import br.edu.ifsp.pep.controller.PessoaController;
 import br.edu.ifsp.pep.model.Pessoa;

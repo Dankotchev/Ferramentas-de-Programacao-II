@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="./../WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        Cadastro de Pessoal
+    </ui:define>
+
+    <ui:define name="content">
+
+        <h:form id="formCadastroPessoa">
+
+            <p:panelGrid columns="2">
+
+                <f:facet name="header">Produto</f:facet>
+
+                <p:outputLabel for="@next" value="Login"/>
+                <p:inputText id="login"
+                             value="#{pessoaController.pessoaInserir.login}"
+                             required="true"
+                             requiredMessage="Informe um login Válido"
+                             autocomplete="false"/>
+
+                <p:outputLabel for="@next" value="Senha"/>
+                <p:password id="senha"
+                            value="#{pessoaController.pessoaInserir.senha}"
+                            required="true"
+                            requiredMessage="Informe uma Senha Válida"
+                            autocomplete="false"/>
+
+                <p:outputLabel for="@next" value="Nome"/>
+                <p:inputText id="nome"
+                             value="#{pessoaController.pessoaInserir.nome}"
+                             required="true"
+                             requiredMessage="Informe um Nome Válido"
+                             autocomplete="false"/>
+
+                <p:outputLabel for="@next" value="Tipo"/>
+                <p:inputText id="tipo"
+                             value="#{pessoaController.pessoaInserir.tipo}"
+                             required="true"
+                             requiredMessage="Informe um Tipo Válido"
+                             autocomplete="false"/>
+
+                <p:outputLabel for="@next" value="Salário"/>
+                <p:inputNumber id="salario"
+                               value="#{pessoaController.pessoaInserir.salario}"
+                               symbol="R$ "
+                               symbolPosition="p"
+                               decimalPlaces="2"
+                               maxlength="0"
+                               required="true"
+                               requiredMessage="Informe um Salário Válido"
+                               autocomplete="false"/>
+
+                <f:facet name="footer">
+                    <p:commandButton value="Cadastrar"
+                                     style="margin: 0 auto; display: block;"
+                                     action="#{pessoaController.cadastrarPessoa}"
+                                     update="formCadastroPessoa growl"/>
+                </f:facet>
+            </p:panelGrid>
+        </h:form>
+    </ui:define>
+</ui:composition>

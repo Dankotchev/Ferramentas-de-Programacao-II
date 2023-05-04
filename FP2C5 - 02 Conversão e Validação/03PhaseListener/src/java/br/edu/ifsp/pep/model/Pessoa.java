@@ -1,5 +1,6 @@
 package br.edu.ifsp.pep.model;
 
+import br.edu.ifsp.pep.service.validation.DecimalPositivo;
 import java.io.Serializable;
 import java.util.Objects;
 import jakarta.persistence.Column;
@@ -28,6 +29,10 @@ public class Pessoa implements Serializable {
     @Column(name = "tipo", length = 3, nullable = false)
     @Size(min = 1, max = 3)
     private String tipo;
+    
+    @DecimalPositivo
+    @Column(name = "salario", precision = 10, scale = 2, nullable = false)
+    private Double salario;
 
     //
     public String getLogin() {
@@ -60,6 +65,14 @@ public class Pessoa implements Serializable {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    public Double getSalario() {
+        return salario;
+    }
+
+    public void setSalario(Double salario) {
+        this.salario = salario;
     }
 
     @Override

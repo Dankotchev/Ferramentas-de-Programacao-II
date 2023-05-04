@@ -26,7 +26,7 @@
     
     <lifecycle>
         <phase-listener>
-            br.edu.ifsp.pep.listener.Autorizacao
+            br.edu.ifsp.pep.service.listener.Autorizacao
         </phase-listener>
     </lifecycle>
     
@@ -41,7 +41,7 @@
     <!--Adicionando capacidade do Beans Validator exibir mensagens personalizada-->
     <application>
         <message-bundle>
-            br.edu.ifsp.pep.resources.Messages
+            br.edu.ifsp.pep.service.resources.Messages
         </message-bundle>
     </application>
 
