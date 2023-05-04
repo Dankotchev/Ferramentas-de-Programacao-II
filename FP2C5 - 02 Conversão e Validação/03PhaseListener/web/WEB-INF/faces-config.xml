@@ -32,10 +32,17 @@
     
     <!--"Regra de navegação" para redirecionar para a página de erro-->
     <navigation-rule>
-       <navigation-case>
-           <from-outcome>erro</from-outcome>
-           <to-view-id>erro.xhtml</to-view-id>
-       </navigation-case>
+        <navigation-case>
+            <from-outcome>erro</from-outcome>
+            <to-view-id>erro.xhtml</to-view-id>
+        </navigation-case>
     </navigation-rule>
+    
+    <!--Adicionando capacidade do Beans Validator exibir mensagens personalizada-->
+    <application>
+        <message-bundle>
+            br.edu.ifsp.pep.resources.Messages
+        </message-bundle>
+    </application>
 
 </faces-config>
