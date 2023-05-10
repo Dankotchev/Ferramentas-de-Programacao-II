@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <title>
+            <ui:insert name="title"></ui:insert>
+        </title>
+    </h:head>
+
+    <h:body>
+
+        <p:growl id="growl"
+                 showSummary="false"
+                 showDetail="true"/>
+
+        <ui:insert name="top">
+            <h:form id="formMenu">
+
+                <p:menubar>
+                    <p:menuitem value="Home" 
+                                action="/index"
+                                icon="pi pi-home" />
+
+                    <p:menuitem value="Folha de Pagamento"
+                                action="/financeiro/folhaPagamento"
+                                icon="pi pi-money-bill"
+                                rendered="#{loginController.verificarTipo1()}"/>
+
+                    <p:submenu label="Pessoal"
+                               icon="pi pi-user"
+                               rendered="#{loginController.pessoaAutenticada != null}">
+
+                        <p:menuitem value="Lista de Pessoal"
+                                    action="/pessoal/lista"
+                                    icon="pi pi-users"/>
+
+                        <p:menuitem value="Cadastro de Pessoa"
+                                    action="/pessoal/cadastrar"
+                                    icon="pi pi-user-plus"/>
+                    </p:submenu>
+
+                    <p:menuitem value="Login"
+                                action="/login"
+                                icon="pi pi-power-off" />
+
+                    <f:facet name="options">
+                        <p:commandButton value="BR"
+                                         action="#{localeController.setLocaleBR}"/>
+                        <p:commandButton value="US"
+                                         action="#{localeController.setLocaleUS}"/>
+                        <p:outputLabel value="#{loginController.pessoaAutenticada.login}"/>
+                    </f:facet>
+
+                </p:menubar>
+            </h:form>                
+        </ui:insert>
+
+
+        <ui:insert name="content">
+            Conteúdo do Template
+        </ui:insert>
+    </h:body>
+</html>

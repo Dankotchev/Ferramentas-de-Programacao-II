@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"          
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="./../WEB-INF/template.xhtml">
+
+    <ui:define name="title">
+        Listagem de Pessoal
+    </ui:define>
+
+    <ui:define name="content">
+
+        <h:form id="formListaPessoal">
+
+
+            <!--Caixa de dialogo confirmando uma ação-->
+            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350">
+                <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no ui-button-flat ui-button-raised"/>
+                <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes ui-button-raised" />
+            </p:confirmDialog>
+
+            <p:commandButton value="Remover"
+                             id="btnRemover"
+                             action="#{pessoaController.removerPessoa}"
+                             disabled="#{pessoaController.pessoaSelecionada == null}"
+                             update="tabela"
+                             styleClass="ui-button-raised ui-button-danger ui-button-flat">
+
+                <p:confirm header="Confirmação" 
+                           message="Tem certeza que quer apagar esses registro?" 
+                           icon="pi pi-info-circle"/>
+
+            </p:commandButton>
+
+            <p:commandButton value="Alterar"
+                             action="/pessoa/alterar"
+                             disabled="#{pessoaController.pessoaSelecionada == null}"
+                             id="btnAlterar"
+                             styleClass="ui-button-raised ui-button-flat">           
+            </p:commandButton>
+
+            <p:dataTable id="tabela"
+                         var="pessoa" 
+                         value="#{pessoaController.listaPessoa}"
+                         rows="15"
+                         paginator="true" 
+                         paginatorPosition="bottom"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         currentPageReportTemplate="{startRecord} - {endRecord} de {totalRecords} registros"
+                         rowsPerPageTemplate="5, 15, 30, 60, {ShowAll|'Todos'}"
+                         reflow="true"
+                         selectionMode="single"
+                         selection="#{pessoaController.pessoaSelecionada}"
+                         rowKey="#{pessoa.login}">
+
+                <p:ajax event="rowSelect"
+                        update=":formListaPessoal:btnRemover :formListaPessoal:btnAlterar"/>
+                <p:ajax event="rowUnselect"
+                        update=":formListaPessoal:btnRemover :formListaPessoal:btnAlterar"/>
+
+                <f:facet name="header">
+                    Pessoal
+                </f:facet>
+
+                <p:column headerText="Login"
+                          field="login">
+                    <h:outputText value="#{pessoa.login}"/>                    
+                </p:column>
+
+                <p:column headerText="Nome"
+                          field="nome">
+                    <h:outputText value="#{pessoa.nome}"/>                    
+                </p:column>
+
+                <p:column headerText="Tipo"
+                          field="tipo">
+                    <h:outputText value="#{pessoa.tipo}"/>                    
+                </p:column>
+
+                <p:column headerText="Salário"
+                          field="salario"
+                          converter="jakarta.faces.Double">
+                    <h:outputText value="#{pessoa.salario}"/>                    
+                </p:column>
+
+            </p:dataTable>
+
+
+        </h:form>
+    </ui:define>
+
+</ui:composition>
