@@ -8,10 +8,11 @@
                 template="./../WEB-INF/template.xhtml">
 
     <ui:define name="title">
-        Cadastro de Pessoal
+        #{bundle.TemplateLabel_alterarPessoal}
     </ui:define>
 
     <ui:define name="content">
+        <h1>#{bundle.TemplateLabel_alterarPessoal}</h1>
 
         <h:form id="formCadastroPessoa">
 
@@ -19,35 +20,36 @@
 
                 <f:facet name="header">Produto</f:facet>
 
-                <p:outputLabel for="@next" value="Login"/>
+                <p:outputLabel for="@next" value="#{bundle.GenericLabel_login}"/>
                 <p:inputText id="#{pessoaController.pessoaSelecionado.login}"
                              value="Login"
+                             disabled="true"
                              required="true"
-                             requiredMessage="Informe um login Válido"
+                             requiredMessage="#{bundle.PessoaRequiredMessage_login}"
                              autocomplete="false"/>
 
-                <p:outputLabel for="@next" value="Senha"/>
+                <p:outputLabel for="@next" value="#{bundle.GenericLabel_senha}"/>
                 <p:password id="senha"
                             value="#{pessoaController.pessoaSelecionado.senha}"
                             required="true"
-                            requiredMessage="Informe uma Senha Válida"
+                            requiredMessage="#{bundle.PessoaRequiredMessage_senha}"
                             autocomplete="false"/>
 
-                <p:outputLabel for="@next" value="Nome"/>
+                <p:outputLabel for="@next" value="#{bundle.PessoaLabel_nome}"/>
                 <p:inputText id="nome"
                              value="#{pessoaController.pessoaSelecionado.nome}"
                              required="true"
-                             requiredMessage="Informe um Nome Válido"
+                             requiredMessage="#{bundle.PessoaRequireMessage_name}"
                              autocomplete="false"/>
 
-                <p:outputLabel for="@next" value="Tipo"/>
+                <p:outputLabel for="@next" value="#{bundle.PessoaLabel_tipo}"/>
                 <p:inputText id="tipo"
                              value="#{pessoaController.pessoaSelecionado.tipo}"
                              required="true"
-                             requiredMessage="Informe um Tipo Válido"
+                             requiredMessage="#{bundle.PessoaRequiredMessage_tipo}"
                              autocomplete="false"/>
 
-                <p:outputLabel for="@next" value="Salário"/>
+                <p:outputLabel for="@next" value="#{bundle.PessoaLabel_salario}"/>
                 <p:inputNumber id="salario"
                                value="#{pessoaController.pessoaSelecionado.salario}"
                                symbol="R$ "
@@ -55,11 +57,11 @@
                                decimalPlaces="2"
                                maxlength="0"
                                required="true"
-                               requiredMessage="Informe um Salário Válido"
+                               requiredMessage="#{bundle.PessoaRequiredMessage_salario}"
                                autocomplete="false"/>
 
                 <f:facet name="footer">
-                    <p:commandButton value="Alterar"
+                    <p:commandButton value="#{bundle.AlterarLabel_alterar}"
                                      style="margin: 0 auto; display: block;"
                                      action="#{pessoaController.alterarPessoa}"
                                      update="formCadastroPessoa growl"/>

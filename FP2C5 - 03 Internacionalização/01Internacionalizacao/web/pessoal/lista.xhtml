@@ -8,10 +8,11 @@
                 template="./../WEB-INF/template.xhtml">
 
     <ui:define name="title">
-        Listagem de Pessoal
+        #{bundle.TemplateLabel_listaPessoal}
     </ui:define>
 
     <ui:define name="content">
+        <h1>#{bundle.TemplateLabel_listaPessoal}</h1>
 
         <h:form id="formListaPessoal">
 
@@ -22,20 +23,20 @@
                 <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes ui-button-raised" />
             </p:confirmDialog>
 
-            <p:commandButton value="Remover"
+            <p:commandButton value="#{bundle.ListaBotao_remover}"
                              id="btnRemover"
                              action="#{pessoaController.removerPessoa}"
                              disabled="#{pessoaController.pessoaSelecionada == null}"
                              update="tabela"
                              styleClass="ui-button-raised ui-button-danger ui-button-flat">
 
-                <p:confirm header="Confirmação" 
-                           message="Tem certeza que quer apagar esses registro?" 
+                <p:confirm header="#{bundle.ListaLabel_confirmacao}" 
+                           message="#{bundle.ListaMensagem_confirmacao}" 
                            icon="pi pi-info-circle"/>
 
             </p:commandButton>
 
-            <p:commandButton value="Alterar"
+            <p:commandButton value="#{bundle.AlterarLabel_alterar}"
                              action="/pessoa/alterar"
                              disabled="#{pessoaController.pessoaSelecionada == null}"
                              id="btnAlterar"
@@ -65,22 +66,22 @@
                     Pessoal
                 </f:facet>
 
-                <p:column headerText="Login"
+                <p:column headerText="#{bundle.GenericLabel_login}"
                           field="login">
                     <h:outputText value="#{pessoa.login}"/>                    
                 </p:column>
 
-                <p:column headerText="Nome"
+                <p:column headerText="#{bundle.PessoaLabel_nome}"
                           field="nome">
                     <h:outputText value="#{pessoa.nome}"/>                    
                 </p:column>
 
-                <p:column headerText="Tipo"
+                <p:column headerText="#{bundle.PessoaLabel_tipo}"
                           field="tipo">
                     <h:outputText value="#{pessoa.tipo}"/>                    
                 </p:column>
 
-                <p:column headerText="Salário"
+                <p:column headerText="#{bundle.PessoaLabel_salario}"
                           field="salario"
                           converter="jakarta.faces.Double">
                     <h:outputText value="#{pessoa.salario}"/>                    

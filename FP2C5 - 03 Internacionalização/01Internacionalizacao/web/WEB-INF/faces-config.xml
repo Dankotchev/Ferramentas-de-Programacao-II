@@ -29,7 +29,7 @@
     <navigation-rule>
         <navigation-case>
             <from-outcome>erro</from-outcome>
-            <to-view-id>erro.xhtml</to-view-id>
+            <to-view-id>/erro.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     

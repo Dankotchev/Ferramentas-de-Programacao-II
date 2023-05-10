@@ -17,14 +17,14 @@
         <h:form id="formLogin">
             <p:panelGrid columns="2">
 
-                <p:outputLabel for="@next" value="Login"/>
+                <p:outputLabel for="@next" value="#{bundle.GenericLabel_login}"/>
                 <p:inputText value="#{loginController.pessoa.login}"/>
 
-                <p:outputLabel for="@next" value="Senha"/>
+                <p:outputLabel for="@next" value="#{bundle.GenericLabel_senha}"/>
                 <p:password value="#{loginController.pessoa.senha}"/>
 
                 <f:facet name="footer">
-                    <p:commandButton value="Acessar"
+                    <p:commandButton value="#{bundle.LoginLabel_acessar}"
                                      action="#{loginController.autenticar}"
                                      update="growl"
                                      style="margin: 0 auto; display: block;"/>
