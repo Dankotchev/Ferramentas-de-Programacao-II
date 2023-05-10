@@ -1,55 +1,73 @@
 package br.edu.ifsp.pep.controller;
 
-import br.edu.ifsp.pep.service.dao.PessoaDAO;
 import br.edu.ifsp.pep.model.Pessoa;
-import java.io.Serializable;
+import br.edu.ifsp.pep.service.dao.PessoaDAO;
+import jakarta.ejb.EJB;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
+import java.io.Serializable;
+import java.util.List;
 import util.Mensagem;
 
 @Named
 @SessionScoped
-public class PessoaController implements Serializable {
+public class PessoaController implements Serializable{
 
     @Inject
+    @EJB
     private PessoaDAO pessoaDAO;
 
-    private Pessoa pessoa;
-    private Pessoa pessoaAutenticada;
+    private List<Pessoa> listaPessoa;
+    private Pessoa pessoaSelecionada;
+    private Pessoa pessoaInserir = new Pessoa();
 
-    public PessoaController() {
-        this.pessoa = new Pessoa();
+    public void cadastrarPessoa() {
+        this.pessoaDAO.inserir(pessoaInserir);
+        this.pessoaInserir = new Pessoa();
+        this.listaPessoa = null;   // Para atualizar a lista de pessoas
+        Mensagem.info("Pessoa cadastrado");
     }
 
-    public void autenticar() {
-        this.pessoaAutenticada = pessoaDAO
-                .buscarPorLoginSenha(pessoa.getLogin(), pessoa.getSenha());
-        if (this.pessoaAutenticada != null)
-            Mensagem.info("Usuário autenticado.");
-        else {
-            Mensagem.error("Login ou Senha inválidos.");
+    public String alterarPessoa() {
+        this.pessoaDAO.atualizar(pessoaSelecionada);
+        this.pessoaSelecionada = null;
+        return "/pessoa/lista";
+    }
+
+    public void removerPessoa() {
+        this.pessoaDAO.remover(pessoaSelecionada);
+        this.pessoaSelecionada = null;
+        this.listaPessoa = null;   // Para atualizar a lista de pessoas
+        Mensagem.info("Pessoa removido");
+    }
+
+    public List<Pessoa> getListaPessoa() {
+        // Reduzi o acesso ao banco de dados
+        if (listaPessoa == null) {
+            listaPessoa = pessoaDAO.buscarTodos();
         }
-        this.pessoa = new Pessoa();
+        return listaPessoa;
     }
     
-    public boolean verificarTipo1 (){
-        if (this.pessoaAutenticada != null 
-                && this.pessoaAutenticada.getTipo().equals("1")) 
-            return true;
-        return false;
-    }
-
     //
-    public Pessoa getPessoa() {
-        return pessoa;
+    public Pessoa getPessoaSelecionada() {
+        return pessoaSelecionada;
     }
 
-    public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
+    public void setPessoaSelecionada(Pessoa pessoaSelecionada) {
+        this.pessoaSelecionada = pessoaSelecionada;
     }
 
-    public Pessoa getPessoaAutenticada() {
-        return pessoaAutenticada;
+    public Pessoa getPessoaInserir() {
+        return pessoaInserir;
+    }
+
+    public void setPessoaInserir(Pessoa pessoaInserir) {
+        this.pessoaInserir = pessoaInserir;
+    }
+
+    public void setListaPessoa(List<Pessoa> listaPessoa) {
+        this.listaPessoa = listaPessoa;
     }
 }

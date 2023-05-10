@@ -32,18 +32,18 @@
                     <p:menuitem value="Folha de Pagamento"
                                 action="/financeiro/folhaPagamento"
                                 icon="pi pi-money-bill"
-                                rendered="#{pessoaController.verificarTipo1()}"/>
+                                rendered="#{loginController.verificarTipo1()}"/>
 
                     <p:submenu label="Pessoal"
                                icon="pi pi-user"
-                               rendered="#{pessoaController.pessoaAutenticada != null}">
+                               rendered="#{loginController.pessoaAutenticada != null}">
 
                         <p:menuitem value="Lista de Pessoal"
                                     action="/pessoal/lista"
                                     icon="pi pi-users"/>
 
                         <p:menuitem value="Cadastro de Pessoa"
-                                    action="/pessoal/cadsatrar"
+                                    action="/pessoal/cadastrar"
                                     icon="pi pi-user-plus"/>
                     </p:submenu>
 
@@ -52,7 +52,7 @@
                                 icon="pi pi-power-off" />
 
                     <f:facet name="options">
-                        <p:outputLabel value="#{pessoaController.pessoaAutenticada.login}"/>
+                        <p:outputLabel value="#{loginController.pessoaAutenticada.login}"/>
                     </f:facet>
 
                 </p:menubar>

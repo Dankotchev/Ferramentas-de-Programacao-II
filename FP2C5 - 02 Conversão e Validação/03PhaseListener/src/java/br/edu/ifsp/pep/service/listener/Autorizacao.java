@@ -1,6 +1,6 @@
 package br.edu.ifsp.pep.service.listener;
 
-import br.edu.ifsp.pep.controller.PessoaController;
+import br.edu.ifsp.pep.controller.LoginController;
 import br.edu.ifsp.pep.model.Pessoa;
 import jakarta.faces.application.NavigationHandler;
 import jakarta.faces.context.FacesContext;
@@ -13,7 +13,7 @@ import java.io.IOException;
 public class Autorizacao implements PhaseListener {
 
     @Inject
-    private PessoaController pessoaController;
+    private LoginController pessoaController;
 
     @Override
     public void afterPhase(PhaseEvent event) {

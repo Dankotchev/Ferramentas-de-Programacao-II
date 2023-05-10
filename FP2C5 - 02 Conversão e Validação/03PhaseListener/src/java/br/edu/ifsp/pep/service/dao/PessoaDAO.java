@@ -6,6 +6,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
+import java.util.List;
 
 @Stateless
 public class PessoaDAO {
@@ -26,4 +27,20 @@ public class PessoaDAO {
         }
     }
 
+    public void inserir(Pessoa pessoa) {
+        this.em.persist(pessoa);
+    }
+
+    public void atualizar(Pessoa pessoa) {
+        this.em.merge(pessoa);
+    }
+
+    public void remover(Pessoa pessoa) {
+        this.em.remove(this.em.merge(pessoa));
+    }
+
+    public List<Pessoa> buscarTodos() {
+        return em.createQuery("SELECT p FROM Pessoa p", Pessoa.class)
+                .getResultList();
+    }
 }

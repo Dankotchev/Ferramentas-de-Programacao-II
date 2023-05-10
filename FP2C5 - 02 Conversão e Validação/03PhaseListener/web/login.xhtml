@@ -18,14 +18,14 @@
             <p:panelGrid columns="2">
 
                 <p:outputLabel for="@next" value="Login"/>
-                <p:inputText value="#{pessoaController.pessoa.login}"/>
+                <p:inputText value="#{loginController.pessoa.login}"/>
 
                 <p:outputLabel for="@next" value="Senha"/>
-                <p:password value="#{pessoaController.pessoa.senha}"/>
+                <p:password value="#{loginController.pessoa.senha}"/>
 
                 <f:facet name="footer">
                     <p:commandButton value="Acessar"
-                                     action="#{pessoaController.autenticar}"
+                                     action="#{loginController.autenticar}"
                                      update="growl"
                                      style="margin: 0 auto; display: block;"/>
                 </f:facet>

@@ -37,7 +37,7 @@
 
             <p:commandButton value="Alterar"
                              action="/pessoa/alterar"
-                             disabled="#{pessoaController.pessoaSelecionado == null}"
+                             disabled="#{pessoaController.pessoaSelecionada == null}"
                              id="btnAlterar"
                              styleClass="ui-button-raised ui-button-flat">           
             </p:commandButton>
@@ -53,8 +53,8 @@
                          rowsPerPageTemplate="5, 15, 30, 60, {ShowAll|'Todos'}"
                          reflow="true"
                          selectionMode="single"
-                         selection="#{pessoaController.pessoaSelecionado}"
-                         rowKey="#{pessoa.id}">
+                         selection="#{pessoaController.pessoaSelecionada}"
+                         rowKey="#{pessoa.login}">
 
                 <p:ajax event="rowSelect"
                         update=":formListaPessoal:btnRemover :formListaPessoal:btnAlterar"/>
