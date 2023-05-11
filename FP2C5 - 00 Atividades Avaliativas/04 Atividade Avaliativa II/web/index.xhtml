@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"          
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <title>Cidades</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta charset="UTF-8"/>
+    </h:head>
+
+    <h:body>
+
+        <div>
+            <h1>Cidade</h1>
+
+            <h:form id="formCidade">
+
+                <p:growl id="growl" showDetail="true" showSummary="false"/>
+                <p:focus context="panel"/>
+
+                <p:panelGrid columns="2" id="panel">
+
+                    <p:outputLabel for="@next"
+                                   value="Estado"/>
+                    <p:selectOneMenu id="estados"
+                                     value="#{consultaController.estadoSelecionado}"
+                                     converter="estadoConveter">
+
+                        <p:ajax event="change" process="@this" update="cidades" />
+
+                        <f:selectItems value="#{consultaController.listaEstados}"/>
+
+                    </p:selectOneMenu>
+
+                    <p:outputLabel for="@next" value="Cidade"/>
+                    <p:selectOneMenu id="cidades"
+                                     value="#{consultaController.cidadeSelecionada}"
+                                     converter="cidadeConveter">
+
+                        <f:selectItems value="#{consultaController.listaCidades}"/>
+                    </p:selectOneMenu>
+
+                    <f:facet name="footer">
+                        <p:commandButton value="Exibir"
+                                         action="#{consultaController.exibirCidade}"
+                                         update="formCidade growl"/>
+                    </f:facet>
+
+                </p:panelGrid>
+
+            </h:form>
+        </div>
+    </h:body>
+</html>
