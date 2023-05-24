@@ -9,12 +9,18 @@ import java.util.Locale;
 @Named
 @SessionScoped
 public class LocaleController implements Serializable{
+    private Locale locale;
+
+    public Locale getLocale() {
+        return locale;
+    }
     
     public void setLocaleUS(){
         FacesContext
                 .getCurrentInstance()
                 .getViewRoot()
                 .setLocale(Locale.US);
+        this.locale = Locale.US;
     }
     
     public void setLocaleBR(){
@@ -22,5 +28,6 @@ public class LocaleController implements Serializable{
                 .getCurrentInstance()
                 .getViewRoot()
                 .setLocale(new Locale("pt", "BR"));
+        this.locale = new Locale("pt", "BR");
     }
 }

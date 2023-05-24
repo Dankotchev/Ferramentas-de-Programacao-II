@@ -9,63 +9,70 @@
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-        <title>
-            <ui:insert name="title"></ui:insert>
-        </title>
+        <f:view locale="#{localeController.locale}"> 
+            <title>
+                <ui:insert name="title"></ui:insert>
+            </title>
+        </f:view>
     </h:head>
 
     <h:body>
+<!--        <f:view locale="#{localeController.locale}"> -->
 
-        <p:growl id="growl"
-                 showSummary="false"
-                 showDetail="true"/>
+            <p:growl id="growl"
+                     showSummary="false"
+                     showDetail="true"/>
 
-        <ui:insert name="top">
-            <h:form id="formMenu">
+            <ui:insert name="top">
+                <h:form id="formMenu">
 
-                <p:menubar>
-                    <p:menuitem value="Home" 
-                                action="/index"
-                                icon="pi pi-home" />
+                    <p:menubar>
+                        <p:menuitem value="#{bundle.TemplateLabel_paginaInicial}" 
+                                    action="/index"
+                                    icon="pi pi-home" />
 
-                    <p:menuitem value="#{bundle.TemplateLabel_folhaPagamento}"
-                                action="/financeiro/folhaPagamento"
-                                icon="pi pi-money-bill"
-                                rendered="#{loginController.verificarTipo1()}"/>
+                        <p:menuitem value="#{bundle.TemplateLabel_folhaPagamento}"
+                                    outcome="/financeiro/folhaPagamento"
+                                    icon="pi pi-money-bill"
+                                    rendered="#{loginController.verificarTipo1()}"/>
 
-                    <p:submenu label="#{bundle.TemplateLabel_pessoal}"
-                               icon="pi pi-user"
-                               rendered="#{loginController.pessoaAutenticada != null}">
+                        <p:submenu label="#{bundle.TemplateLabel_pessoal}"
+                                   icon="pi pi-user"
+                                   rendered="#{loginController.pessoaAutenticada != null}">
 
-                        <p:menuitem value="#{bundle.TemplateLabel_listaPessoal}"
-                                    action="/pessoal/lista"
-                                    icon="pi pi-users"/>
+                            <p:menuitem value="#{bundle.TemplateLabel_listaPessoal}"
+                                        action="/pessoal/lista"
+                                        icon="pi pi-users"/>
 
-                        <p:menuitem value="#{bundle.TemplateLabel_cadastroPessoal}"
-                                    action="/pessoal/cadastrar"
-                                    icon="pi pi-user-plus"/>
-                    </p:submenu>
+                            <p:menuitem value="#{bundle.TemplateLabel_cadastroPessoal}"
+                                        action="/pessoal/cadastrar"
+                                        icon="pi pi-user-plus"/>
+                        </p:submenu>
 
-                    <p:menuitem value="Login"
-                                action="/login"
-                                icon="pi pi-power-off" />
+                        <p:menuitem value="Login"
+                                    action="/login"
+                                    icon="pi pi-power-off" />
 
-                    <f:facet name="options">
-                        <p:commandButton value="BR"
-                                         action="#{localeController.setLocaleBR}"/>
-                        <p:commandButton value="US"
-                                         action="#{localeController.setLocaleUS}"/>
-                        <p:outputLabel value="#{loginController.pessoaAutenticada.login}"/>
-                    </f:facet>
+                        <f:facet name="options">
+                            <p:outputLabel value="#{loginController.pessoaAutenticada.login} | "/>
+                            <p:commandButton value="BR"
+                                             action="#{localeController.setLocaleBR}"
+                                             immediate="true"
+                                             update="@form"/>
+                            <p:commandButton value="US"
+                                             action="#{localeController.setLocaleUS}"
+                                             immediate="true"
+                                             update="@form"/>
+                        </f:facet>
 
-                </p:menubar>
-            </h:form>                
-        </ui:insert>
+                    </p:menubar>
+                </h:form>                
+            </ui:insert>
 
 
-        <ui:insert name="content">
-            Conteúdo do Template
-        </ui:insert>
+            <ui:insert name="content" id="conteudoPagina">
+                Conteúdo do Template
+            </ui:insert>
+<!--        </f:view>-->
     </h:body>
 </html>

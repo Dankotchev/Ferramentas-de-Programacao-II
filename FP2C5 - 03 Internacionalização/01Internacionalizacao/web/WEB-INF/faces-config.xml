@@ -24,6 +24,15 @@
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-facesconfig_3_0.xsd">
     
+    
+    <lifecycle>
+        <phase-listener>
+            br.edu.ifsp.pep.service.listener.Autorizacao
+        </phase-listener>
+        <phase-listener>
+            br.edu.ifsp.pep.service.listener.CicloDeVida
+        </phase-listener>
+    </lifecycle>
    
     <!--"Regra de navegação" para redirecionar para a página de erro-->
     <navigation-rule>
