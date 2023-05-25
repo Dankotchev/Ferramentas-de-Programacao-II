@@ -5,10 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.io.Serializable;
-import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -22,8 +20,6 @@ public class Estado implements Serializable{
     
     @Column(name = "nome_estado", length = 40, nullable = false)
     private String nome;
-   
-
     
     //
     public Estado() {

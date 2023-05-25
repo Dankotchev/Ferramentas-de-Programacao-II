@@ -6,8 +6,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedQuery;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.util.Objects;
@@ -26,11 +26,9 @@ public class Cidade implements Serializable{
     @Column(name = "nome_cidade", length = 60, nullable = false)
     private String nome;
     
-    @OneToOne
-    @JoinColumn(name = "estado_id")
+    @ManyToOne
+    @JoinColumn(name = "estado_id", nullable = false)
     private Estado estado;
-
-
 
     //
     public Cidade() {

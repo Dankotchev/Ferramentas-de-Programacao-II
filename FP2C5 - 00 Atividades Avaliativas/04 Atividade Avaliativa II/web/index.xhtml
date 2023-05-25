@@ -26,8 +26,7 @@
                     <p:outputLabel for="@next"
                                    value="Estado"/>
                     <p:selectOneMenu id="estados"
-                                     value="#{consultaController.estadoSelecionado}"
-                                     converter="estadoConveter">
+                                     value="#{consultaController.estadoSelecionado}">
 
                         <p:ajax event="change" process="@this" update="cidades" />
 
@@ -37,15 +36,14 @@
 
                     <p:outputLabel for="@next" value="Cidade"/>
                     <p:selectOneMenu id="cidades"
-                                     value="#{consultaController.cidadeSelecionada}"
-                                     converter="cidadeConveter">
+                                     value="#{consultaController.cidadeSelecionada}">
 
                         <f:selectItems value="#{consultaController.listaCidades}"/>
                     </p:selectOneMenu>
 
                     <f:facet name="footer">
                         <p:commandButton value="Exibir"
-                                         action="#{consultaController.exibirCidade}"
+                                         action="#{consultaController.exibirCidade()}"
                                          update="formCidade growl"/>
                     </f:facet>
 

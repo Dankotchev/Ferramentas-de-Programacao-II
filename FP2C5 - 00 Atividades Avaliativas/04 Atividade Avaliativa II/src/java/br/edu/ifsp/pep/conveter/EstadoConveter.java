@@ -8,7 +8,7 @@ import jakarta.faces.context.FacesContext;
 import jakarta.faces.convert.Converter;
 import jakarta.faces.convert.FacesConverter;
 
-@FacesConverter("estadoConveter")
+@FacesConverter(forClass = Estado.class)
 public class EstadoConveter implements Converter<Estado> {
 
     @Override
