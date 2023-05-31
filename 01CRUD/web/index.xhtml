@@ -14,45 +14,6 @@
     <h:body>
 
         <div>
-            <h1>Cidade</h1>
-
-            <h:form id="formCidade">
-
-                <p:growl id="growl" showDetail="true" showSummary="false"/>
-                <p:focus context="panel"/>
-
-                <p:panelGrid columns="2" id="panel">
-
-                    <p:outputLabel for="@next"
-                                   value="Estado"/>
-                    <p:selectOneMenu id="estados"
-                                     value="#{consultaController.estadoSelecionado}"
-                                     required="true" requiredMessage="Selecione um Estado.">
-
-                        <p:ajax event="change" process="@this" update="cidades" />
-                        <f:selectItem itemLabel="Selecione" itemValue=""/>
-                        <f:selectItems value="#{consultaController.listaEstados}"
-                                       var="item" itemLabel="#{item.nome}" itemValue="#{item}"/>
-                    </p:selectOneMenu>
-
-                    <p:outputLabel for="@next" value="Cidade"/>
-                    <p:selectOneMenu id="cidades"
-                                     value="#{consultaController.cidadeSelecionada}"
-                                     required="true" requiredMessage="Selecione uma Cidade.">
-
-                        <f:selectItem itemLabel="Selecione" itemValue=""/>
-                        <f:selectItems value="#{consultaController.listaCidades}"
-                                       var="itemCidade" itemLabel="#{itemCidade.nome}"
-                                       itemValue="#{itemCidade}"/>
-                    </p:selectOneMenu>
-
-                    <f:facet name="footer">
-                        <p:commandButton value="Exibir"
-                                         action="#{consultaController.exibirCidade()}"
-                                         update="formCidade growl"/>
-                    </f:facet>
-                </p:panelGrid>
-            </h:form>
-        </div>
+            <h1>Página inicial</h1>
     </h:body>
 </html>
