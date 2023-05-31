@@ -18,50 +18,26 @@ public class ConsultaController implements Serializable {
 
     @Inject
     private CidadeDAO cidadeDAO;
-    private List<Cidade> listaCidades;
     private Cidade cidadeSelecionada;
-    
+
     @Inject
     private EstadoDAO estadoDAO;
-    private List<Estado> listaEstados;
     private Estado estadoSelecionado;
-    
 
-    public void exibirCidade(){
-        String mensagem = "Cidade Selecionada:\n";
-        if (cidadeSelecionada != null) {
-            mensagem += cidadeSelecionada.getNome();
-        }
-        else {
-            mensagem = mensagem + "Nenhuma cidade selecionada.";
-        }
-            Mensagem.info(mensagem);
-            System.out.println(mensagem);
+    public void exibirCidade() {
+        String mensagem = "Cidade Selecionada:\n" + cidadeSelecionada.getNome();
+        Mensagem.info(mensagem);
     }
-    
-    //
+
     public List<Cidade> getListaCidades() {
-        if (this.listaCidades == null) {
-            listaCidades = cidadeDAO.buscarTodasPorEstado(estadoSelecionado);
-        }
-        return listaCidades;
-    }
-
-    public void setListaCidades(List<Cidade> listaCidades) {
-        this.listaCidades = listaCidades;
+        return cidadeDAO.buscarTodasPorEstado(estadoSelecionado);
     }
 
     public List<Estado> getListaEstados() {
-        if (this.listaEstados == null) {
-            this.listaEstados = estadoDAO.buscarTodos();
-        }
-        return listaEstados;
+        return estadoDAO.buscarTodos();
     }
 
-    public void setListaEstados(List<Estado> listaEstados) {
-        this.listaEstados = listaEstados;
-    }
-
+    //
     public Cidade getCidadeSelecionada() {
         return cidadeSelecionada;
     }

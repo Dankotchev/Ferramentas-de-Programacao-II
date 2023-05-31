@@ -81,9 +81,4 @@ public class Cidade implements Serializable{
         final Cidade other = (Cidade) obj;
         return Objects.equals(this.id, other.id);
     }
-
-    @Override
-    public String toString() {
-        return nome;
-    }
 }
