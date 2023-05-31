@@ -6,41 +6,21 @@
 * Inserir título nas páginas xhtml (browser).
 * Páginas devem ser responsivas.
 
-## Menu
+## Projeto
 
-* Deve possuir uma imagem para cada link e não deve ser a do exemplo do primefaces.
-* Deve possuir dois itens: Calculadora e Funcionários. Os itens devem fazer o redirecionamento para as respectivas páginas.
+* Implemente um projeto que permita o usuário selecionar um estado (UF) e listar as cidades pertencentes ao estado selecionado.
+* O componente select (combobox) não possui a propriedade update para atualizar (renderizar) outro componente. Por isso, adicione o componente abaixo como filho do componente select.
+	* `<p:ajax event="change" update="" />`
+* As informações do estado e cidade devem estar armazenadas no banco de dados.
+* As informações do estado e cidade podem ser inseridas manualmente, porém o projeto deve ser capaz de gerar as tabelas automaticamente.
+* Ao clicar no botão exibir deve apresentar a cidade selecionada.
 
-## Mensagem
+## Exemplo
 
-* Utilizar o componente para exibir as mensagens do sistema na forma de ‘balão”.
-* O texto da mensagem não deve ser repetido.
+![Captura de tela 2023-03-23 - 07.43.50.png](https://images2.imgbox.com/2b/74/RAplrkLQ_o.png)
 
-## Calculadora
+![Captura de tela 2023-03-23 - 07.43.33.png](https://images2.imgbox.com/34/8a/YVdHbDNn_o.png)
 
-* Criar uma página com o nome index.xhtml que faça somente as operações básicas matemáticas: soma, subtração, multiplicação e divisão.
-* O componente de entrada de dados deve receber o focus quando o label é clicado.
-* Validar entrada de dados (campos obrigatórios).
-* Validar divisão por zero.
-* Permitir somente os operadores de soma, subtração, multiplicação e divisão.
-* Se alguma operação lançar uma exception, ela deve ser tratada.
+![Captura de tela 2023-03-23 - 07.43.33.png](https://images2.imgbox.com/8d/4d/1FOPplhW_o.png)
 
-![![Captura de tela 2023-03-23 - 07.39.52.png](https://images2.imgbox.com/7b/69/nCUyPusc_o.png "![Captura de tela 2023-03-23 - 07.39.52.png")
-
-## Funcionários
-
-* Criar uma página com o nome List.xhmt dentro do diretório funcionario.
-* A página deve listar o nome e o salário dos funcionários.
-* Criar um método para gerar 50 funcionário e armazenar em uma lista dinâmica.
-* Permitir filtrar por Nome.
-* Permitir ordenar pela Nome.
-* Permitir paginação dos dados.
-* Exibir 5 linhas por página.
-* Ser responsiva.
-* Ter linhas "Zebradas" (tabela).
-
-![Captura de tela 2023-03-23 - 07.43.50.png](https://images2.imgbox.com/2e/bd/aBvp9rv8_o.png)
-
-![Captura de tela 2023-03-23 - 07.43.33.png](https://images2.imgbox.com/92/94/DEauWR9U_o.png)
-
->Feedback do professor: - Não validou os operadores. - O atributo resultado da classe CalculadoraController deveria estar na classe calculadora. - Não funcionou a implementação de validação por zero. - O escopo da classe CalculadoraController está errado. - Ao clicar no label Operador, o focus está sendo direcionado para o componente errado. - Nome de variável incorreto: Funcionario criar. - Não deveria existir o método setListaFuncionario na classe FuncionarioController. - Linhas 37 e 40, do arquivo List.xhtml, são desnecessárias
+>Feedback do professor: 
