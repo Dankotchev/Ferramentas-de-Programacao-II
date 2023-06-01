@@ -1,46 +1,39 @@
 # Enunciado
 
-## Atenção
+## Venda
 
-* Seguir as convenções de programação.
-* Inserir título nas páginas xhtml (browser).
-* Páginas devem ser responsivas.
+Implemente a página de venda conforme a figura abaixo.
+![Venda](https://images2.imgbox.com/71/29/8t9NPzy5_o.png)
 
-## Menu
+* ComboBox (select) Produto
+    * Deve listar todos os produtos armazenados na base de dados.
+* Preço
+    * Deve exibir o preço atual do produto.
+    * Não deve permitir alterar o preço do produto.
+* Quantidade
+    * Deve permitir o usuário informar a quantidade comprada.
+    * Não deve permitir informar um valor menor do que 1.
+* Botão Adicionar
+    * Deve inserir um registro na tabela (Data Table).
+    * Deve verificar se os campos de entrada foram preenchidos.
+    * Caso o produto seja adicionado duas vezes, deve somar a quantidade e ficar somente um registro no itens da venda (tabela).
+* Tabela
+    * Deve listar a descrição, o preço, a quantidade e o preço parcial do produto.
+    * No fim da tabela deve exibir o preço total da venda.
+* Botão Pagamento
+    * Deve encaminhar para a página de pagamento somente se pelo menos um produto foi adicionado.
 
-* Deve possuir uma imagem para cada link e não deve ser a do exemplo do primefaces.
-* Deve possuir dois itens: Calculadora e Funcionários. Os itens devem fazer o redirecionamento para as respectivas páginas.
+## Pagamento
 
-## Mensagem
+Implemente a página de pagamento conforme a figura abaixo.
+![Pagamento](https://images2.imgbox.com/ec/6b/DY6I09EC_o.png)
 
-* Utilizar o componente para exibir as mensagens do sistema na forma de ‘balão”.
-* O texto da mensagem não deve ser repetido.
+* Deve listar os produtos escolhidos na página de venda.
+* Botão Cancelar Venda
+    * Deve cancelar a venda a atual e redirecionar para a página de venda.
+* Botão Continuar Comprando
+    * Deve redirecionar para a página de venda e permitir o usuário comprar mais produtos.
+* Botão Finalizar Venda
+    * Deve validar se os produtos contém quantidade suficiente em estoque. Se não possuir, não pode deixar finalizar a venda, se possuir, diminuir do estoque.
+    * Atribuir a data da venda.
 
-## Calculadora
-
-* Criar uma página com o nome index.xhtml que faça somente as operações básicas matemáticas: soma, subtração, multiplicação e divisão.
-* O componente de entrada de dados deve receber o focus quando o label é clicado.
-* Validar entrada de dados (campos obrigatórios).
-* Validar divisão por zero.
-* Permitir somente os operadores de soma, subtração, multiplicação e divisão.
-* Se alguma operação lançar uma exception, ela deve ser tratada.
-
-![![Captura de tela 2023-03-23 - 07.39.52.png](https://images2.imgbox.com/7b/69/nCUyPusc_o.png "![Captura de tela 2023-03-23 - 07.39.52.png")
-
-## Funcionários
-
-* Criar uma página com o nome List.xhmt dentro do diretório funcionario.
-* A página deve listar o nome e o salário dos funcionários.
-* Criar um método para gerar 50 funcionário e armazenar em uma lista dinâmica.
-* Permitir filtrar por Nome.
-* Permitir ordenar pela Nome.
-* Permitir paginação dos dados.
-* Exibir 5 linhas por página.
-* Ser responsiva.
-* Ter linhas "Zebradas" (tabela).
-
-![Captura de tela 2023-03-23 - 07.43.50.png](https://images2.imgbox.com/2e/bd/aBvp9rv8_o.png)
-
-![Captura de tela 2023-03-23 - 07.43.33.png](https://images2.imgbox.com/92/94/DEauWR9U_o.png)
-
->Feedback do professor: - Não validou os operadores. - O atributo resultado da classe CalculadoraController deveria estar na classe calculadora. - Não funcionou a implementação de validação por zero. - O escopo da classe CalculadoraController está errado. - Ao clicar no label Operador, o focus está sendo direcionado para o componente errado. - Nome de variável incorreto: Funcionario criar. - Não deveria existir o método setListaFuncionario na classe FuncionarioController. - Linhas 37 e 40, do arquivo List.xhtml, são desnecessárias
