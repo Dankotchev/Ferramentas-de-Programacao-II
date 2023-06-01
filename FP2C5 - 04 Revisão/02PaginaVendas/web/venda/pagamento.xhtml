@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../WEB-INF/template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="title">
+        Pagamento
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form id="pagamento">
+            
+            <p:dataTable id="itemVenda"
+                         value="#{vendaController.listaProduto}"
+                         var="item"
+                         rowKey="#{item.id}"
+                         selectionMode="single">
+
+                <f:facet name="header">
+                    <p:outputLabel value="Itens de Venda"/>
+                </f:facet>
+
+                <p:column headerText="Produto">
+                    <h:outputText value="#{item.nome}"/>
+                </p:column>
+
+                <p:column headerText="Preço">
+                    <h:outputText value="#{item.preco}"/>
+                </p:column>
+
+                <p:column headerText="Quantidade">
+                    <h:outputText value="#{item.quantidade}"/>
+                </p:column>
+
+                <p:column headerText="Subtotal">
+                    <h:outputText value="#{item.subtotal}"/>
+                </p:column>
+
+                <f:facet name="footer">
+                    <p:outputLabel value="Preço total: R$ #{vendaController.total}"/>
+                </f:facet>
+            </p:dataTable>
+
+            <p:commandButton value="Pagamento"/>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

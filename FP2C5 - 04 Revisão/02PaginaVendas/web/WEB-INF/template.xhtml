@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <ui:insert name="title">Facelets Templates</ui:insert>
+    </h:head>
+
+    <h:body>
+
+        <ui:insert name="top">
+            
+            <p:menubar>
+                <p:menuitem value="Home"
+                            outcome="/index"
+                            icon="pi pi-home"/>
+
+                    <p:menuitem value="Venda"
+                                outcome="/venda/venda"
+                                icon="pi pi-cart-plus"/>
+            </p:menubar>
+            
+        </ui:insert>
+
+        <ui:insert name="content">
+            Conteúdo
+        </ui:insert>
+
+        <ui:insert name="bottom">
+            Bottom
+        </ui:insert>
+    </h:body>
+</html>
