@@ -27,7 +27,7 @@
     </servlet-mapping>
     
     <welcome-file-list>
-        <welcome-file>index.xhtml</welcome-file>
+        <welcome-file>barra.xhtml</welcome-file>
     </welcome-file-list>
     
     <!--Resolver advertências do tipo de mime-->
