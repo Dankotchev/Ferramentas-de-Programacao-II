@@ -6,16 +6,8 @@ import java.util.Random;
 
 public class ValoresNumericos {
 
-    private List<Number> valores;
+    private List<Number> valores = new ArrayList<>();
     
-    public ValoresNumericos (){
-        Random random = new Random();
-        this.valores = new ArrayList<>();
-        for (int i = 0; i < 13; i++) {
-            valores.add(random.nextInt(9000) + 1000);
-        }
-    }
-
     public List<Number> gerarValores() {
        Random random = new Random();
         this.valores = new ArrayList<>();
