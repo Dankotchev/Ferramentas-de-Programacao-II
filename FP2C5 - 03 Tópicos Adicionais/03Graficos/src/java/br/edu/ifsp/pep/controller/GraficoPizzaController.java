@@ -8,8 +8,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import org.primefaces.model.charts.ChartData;
+import org.primefaces.model.charts.axes.cartesian.CartesianScales;
+import org.primefaces.model.charts.axes.cartesian.linear.CartesianLinearAxes;
+import org.primefaces.model.charts.optionconfig.legend.Legend;
+import org.primefaces.model.charts.optionconfig.legend.LegendLabel;
+import org.primefaces.model.charts.optionconfig.title.Title;
 import org.primefaces.model.charts.pie.PieChartDataSet;
 import org.primefaces.model.charts.pie.PieChartModel;
+import org.primefaces.model.charts.pie.PieChartOptions;
 
 @Named
 @RequestScoped
@@ -28,6 +34,9 @@ public class GraficoPizzaController implements Serializable {
 
         ChartData dataChart = createCharData();
         pieModel.setData(dataChart);
+        
+        PieChartOptions chartOptions = defineOptions();
+        pieModel.setOptions(chartOptions);
     }
 
     private ChartData createCharData() {
@@ -56,6 +65,39 @@ public class GraficoPizzaController implements Serializable {
         return data;
     }
 
+    private PieChartOptions defineOptions() {
+        PieChartOptions opcoes = new PieChartOptions();
+        
+        // Titulo do Gráfico
+        Title title = new Title();
+        title.setDisplay(true);
+        title.setFontSize(36);
+        title.setPosition("top");
+        title.setText("Produtos Vendidos");
+        opcoes.setTitle(title);
+        
+        // Legenda dos conjntos de dados
+        Legend legenda = new Legend();
+        legenda.setDisplay(true);
+        legenda.setPosition("top");
+        LegendLabel legendLabels = new LegendLabel();
+        legendLabels.setFontStyle("italic");
+        legendLabels.setFontColor("#2980B9");
+        legendLabels.setFontSize(24);
+        legenda.setLabels(legendLabels);
+        opcoes.setLegend(legenda);
+        
+        CartesianScales cScales = new CartesianScales();
+        CartesianLinearAxes linearAxes = new CartesianLinearAxes();
+        linearAxes.setId("left-y-axis");
+        linearAxes.setPosition("left");
+        CartesianLinearAxes linearAxes2 = new CartesianLinearAxes();
+        linearAxes2.setId("right-y-axis");
+        linearAxes2.setPosition("right");
+        
+        return opcoes;
+    }
+    
     //
     public PieChartModel getPieModel() {
         return pieModel;

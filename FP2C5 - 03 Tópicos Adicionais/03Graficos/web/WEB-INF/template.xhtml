@@ -6,14 +6,16 @@
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <ui:insert name="title">Facelets Templates</ui:insert>
+        <title>
+            <ui:insert name="title">Facelets Templates</ui:insert>
+        </title>
     </h:head>
 
     <h:body>
 
         <ui:insert name="top">
             <p:menubar>
-                
+
                 <p:menuitem value="Gráfico de Barras"
                             outcome="/barra"
                             icon="pi pi-chart-bar"/>
