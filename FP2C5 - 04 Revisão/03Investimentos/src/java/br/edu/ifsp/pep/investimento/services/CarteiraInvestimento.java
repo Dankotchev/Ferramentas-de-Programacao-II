@@ -18,5 +18,8 @@ public class CarteiraInvestimento {
     public List<Investimento> getCarteira() {
         return carteira;
     }
-    
+
+    public void setCarteira(List<Investimento> carteira) {
+        this.carteira = carteira;
+    }
 }

@@ -1,39 +1,42 @@
 package br.edu.ifsp.pep.investimento.model;
 
 import jakarta.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name = "investimento")
-public class Investimento {
-    
+public class Investimento implements Serializable {
+
     @Id
     @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    
+
     @Column(name = "tipo", length = 3, nullable = false)
     private String tipo;
-    
+
     @Column(name = "valor_investido", nullable = false, precision = 12, scale = 2)
-    private Double valorInvestido;
-    
+    private double valorInvestido;
+
     @Column(name = "porcentagem", nullable = false, precision = 6, scale = 2)
-    private Double porcentagem;
-    
+    private double porcentagem;
+
     @Column(name = "tempo_investido", nullable = false)
     private Integer tempoInvestido;
-    
-    @Column(name = "ir", nullable = false, precision = 12, scale = 2)
-    private Double ir;
-    
-    @Column(name = "rendimento_bruto", nullable = false, precision = 12, scale = 2)
-    private Double rendimentoBruto;
-    
-    @Column(name = "rendimento_liquido", nullable = false, precision = 12, scale = 2)
-    private Double rendimentoLíquido;
 
-    
+    @Column(name = "ir", nullable = false, precision = 12, scale = 2)
+    private double ir;
+
+    @Column(name = "montante", nullable = false, precision = 12, scale = 2)
+    private double montante;
+
+    @Column(name = "rendimento_bruto", nullable = false, precision = 12, scale = 2)
+    private double rendimentoBruto;
+
+    @Column(name = "rendimento_liquido", nullable = false, precision = 12, scale = 2)
+    private double rendimentoLíquido;
+
     //
     public Investimento() {
         this.ir = 0.0;
@@ -48,7 +51,7 @@ public class Investimento {
     public void setId(Integer id) {
         this.id = id;
     }
-    
+
     public String getTipo() {
         return tipo;
     }
@@ -57,19 +60,19 @@ public class Investimento {
         this.tipo = tipo;
     }
 
-    public Double getValorInvestido() {
+    public double getValorInvestido() {
         return valorInvestido;
     }
 
-    public void setValorInvestido(Double valorInvestido) {
+    public void setValorInvestido(double valorInvestido) {
         this.valorInvestido = valorInvestido;
     }
 
-    public Double getPorcentagem() {
+    public double getPorcentagem() {
         return porcentagem;
     }
 
-    public void setPorcentagem(Double porcentagem) {
+    public void setPorcentagem(double porcentagem) {
         this.porcentagem = porcentagem;
     }
 
@@ -81,27 +84,35 @@ public class Investimento {
         this.tempoInvestido = tempoInvestido;
     }
 
-    public Double getIr() {
+    public double getIr() {
         return ir;
     }
 
-    public void setIr(Double ir) {
+    public void setIr(double ir) {
         this.ir = ir;
     }
 
-    public Double getRendimentoBruto() {
+    public double getMontante() {
         return rendimentoBruto;
     }
 
-    public void setRendimentoBruto(Double rendimentoBruto) {
+    public void setMontante(double montante) {
+        this.montante = montante;
+    }
+
+    public double getRendimentoBruto() {
+        return rendimentoBruto;
+    }
+
+    public void setRendimentoBruto(double rendimentoBruto) {
         this.rendimentoBruto = rendimentoBruto;
     }
 
-    public Double getRendimentoLíquido() {
+    public double getRendimentoLíquido() {
         return rendimentoLíquido;
     }
 
-    public void setRendimentoLíquido(Double rendimentoLíquido) {
+    public void setRendimentoLíquido(double rendimentoLíquido) {
         this.rendimentoLíquido = rendimentoLíquido;
     }
 
@@ -122,5 +133,10 @@ public class Investimento {
             return false;
         final Investimento other = (Investimento) obj;
         return Objects.equals(this.id, other.id);
+    }
+
+    @Override
+    public String toString() {
+        return "Investimento{" + "id=" + id + ", tipo=" + tipo + ", valorInvestido=" + valorInvestido + ", porcentagem=" + porcentagem + ", tempoInvestido=" + tempoInvestido + ", ir=" + ir + ", montante=" + montante + ", rendimentoBruto=" + rendimentoBruto + ", rendimentoL\u00edquido=" + rendimentoLíquido + '}';
     }
 }

@@ -1,8 +1,10 @@
 package br.edu.ifsp.pep.investimento.controller;
 
+import br.edu.ifsp.pep.investimento.dao.InvestimentoDAO;
 import br.edu.ifsp.pep.investimento.model.Investimento;
 import br.edu.ifsp.pep.investimento.services.CarteiraInvestimento;
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import java.io.Serializable;
 
@@ -12,6 +14,9 @@ public class InvestimentoController implements Serializable {
 
     private Investimento investimento = new Investimento();
     private CarteiraInvestimento carteiraInvestimento = new CarteiraInvestimento();
+    
+    @Inject
+    private InvestimentoDAO investimentoDAO = new InvestimentoDAO();
 
     public void cadastrarInvestimento() {
 
@@ -21,41 +26,41 @@ public class InvestimentoController implements Serializable {
             calcularIR();
             investimento.setRendimentoLíquido(
                     investimento.getRendimentoBruto() - investimento.getIr());
-        } else {
+        } else
             investimento.setRendimentoLíquido(investimento.getRendimentoBruto());
-        }
 
-        investimento.setId(carteiraInvestimento.getCarteira().size() + 1);
-        carteiraInvestimento.adicionarInvestimento(investimento);
-
+        System.out.println(investimento);
+        investimentoDAO.insert(investimento);
     }
 
     private void calcularRendimento() {
-        Double jurosDiario;
-        Double jurosAnual = investimento.getPorcentagem() / 100;
-        jurosDiario = Math.pow((jurosAnual + 1), (1 / 365)) - 1;
+        System.out.println("Calclular rendimento");
+        double jurosDiario;
+        double jurosAnual = (investimento.getPorcentagem() / 100) + 1;
+        double rendimento;
+        jurosDiario = Math.pow(jurosAnual, ((double)1/365));
 
-        investimento.setRendimentoBruto(
-                investimento.getValorInvestido()
-                * Math.pow(jurosDiario + 1, investimento.getTempoInvestido()));
+        rendimento = investimento.getValorInvestido()
+                * Math.pow(jurosDiario, investimento.getTempoInvestido());
+        
+        investimento.setRendimentoBruto(investimento.getValorInvestido() - rendimento);
     }
 
     private void calcularIR() {
         Integer tempo = investimento.getTempoInvestido();
-        Double rendimento = investimento.getRendimentoBruto();
-        Double ir;
-        if (tempo <= 180) {
+        double rendimento = investimento.getRendimentoBruto();
+        double ir;
+        if (tempo <= 180)
             ir = rendimento * 0.225;
-        } else if (tempo <= 360) {
+        else if (tempo <= 360)
             ir = rendimento * 0.200;
-        } else if (tempo <= 720) {
+        else if (tempo <= 720)
             ir = rendimento * 0.175;
-        } else {
+        else
             ir = rendimento * 0.150;
-        }
         investimento.setIr(ir);
     }
-    
+
     //
     public Investimento getInvestimento() {
         return investimento;
@@ -66,6 +71,7 @@ public class InvestimentoController implements Serializable {
     }
 
     public CarteiraInvestimento getCarteiraInvestimento() {
+        carteiraInvestimento.setCarteira(investimentoDAO.findAll());
         return carteiraInvestimento;
     }
 
