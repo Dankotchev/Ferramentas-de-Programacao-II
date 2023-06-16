@@ -2,14 +2,77 @@
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                template="./WEB-INF/template.xhtml">
+                template="./WEB-INF/template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="title">
         Investir
     </ui:define>
 
     <ui:define name="content">
-        content
+
+        <h:form id="compraInvestimento">
+
+            <p:growl id="growl" showDetail="true" showSummary="false"/>
+
+            <div style="display: flex; justify-content: center; align-items: center; height: 50hv">
+                <p:panelGrid columns="2">
+
+                    <f:facet name="header">
+                        Investimento
+                    </f:facet>
+
+                    <p:outputLabel for="@next" value="Tipo de Investimento"/>
+                    <p:selectOneMenu id="tipo"
+                                     value="#{investimentoController.investimento.tipo}"
+                                     required="true">
+                        <f:selectItem itemLabel="CDB" itemValue="CDB"/>
+                        <f:selectItem itemLabel="LCI" itemValue="LCI"/>
+                    </p:selectOneMenu>
+
+                    <p:outputLabel for="@next" value="Valor do Investimento"/>
+                    <p:inputNumber id="investido"
+                                   value="#{investimentoController.investimento.valorInvestido}"
+                                   symbol="R$ "
+                                   symbolPosition="p"
+                                   decimalSeparator=","
+                                   thousandSeparator="."
+                                   emptyValue="zero"
+                                   minValue="0"
+                                   required="true"/>
+
+                    <p:outputLabel for="@next" value="Taxa de Juros (%)"/>
+                    <p:inputNumber id="porcentagem"
+                                   value="#{investimentoController.investimento.porcentagem}"
+                                   symbol="%"
+                                   symbolPosition="s"
+                                   decimalSeparator=","
+                                   thousandSeparator="."
+                                   emptyValue="always"
+                                   minValue="0"
+                                   required="true"/>
+
+                    <p:outputLabel for="@next" value="Tempo Investido"/>
+                    <p:inputNumber id="tempoInvestido"
+                                   value="#{investimentoController.investimento.tempoInvestido}"
+                                   minValue="1"
+                                   required="true"/>
+
+                    <f:facet name="footer">
+                        <p:panel rendered="false">
+                            teste
+                        </p:panel>
+                        <p:commandButton value="Calcular"
+                                         style="margin: 0 auto; display: block;"
+                                         action="#{investimentoController.cadastrarInvestimento()}"
+                                         update="growl, @form"/>
+
+                    </f:facet>
+                </p:panelGrid>
+            </div>
+        </h:form>
     </ui:define>
 
 </ui:composition>
