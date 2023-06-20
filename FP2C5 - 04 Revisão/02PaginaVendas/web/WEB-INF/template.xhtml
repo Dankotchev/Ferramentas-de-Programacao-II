@@ -10,31 +10,60 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <h:outputStylesheet name="./css/default.css"/>
         <h:outputStylesheet name="./css/cssLayout.css"/>
+        <h:outputStylesheet name="/css/primeflex/primeflex.min.css"/>
         <ui:insert name="title">Facelets Templates</ui:insert>
     </h:head>
 
     <h:body>
 
-        <ui:insert name="top">
-            
-            <p:menubar>
-                <p:menuitem value="Home"
-                            outcome="/index"
-                            icon="pi pi-home"/>
+        <div id="container">
 
-                    <p:menuitem value="Venda"
-                                outcome="/venda/venda"
-                                icon="pi pi-cart-plus"/>
-            </p:menubar>
-            
-        </ui:insert>
+            <div id="top">
 
-        <ui:insert name="content">
-            Conteúdo
-        </ui:insert>
+                <ui:insert name="top">
 
-        <ui:insert name="bottom">
-            Bottom
-        </ui:insert>
+                    <div class="card">
+
+                        <header>Atividade Extra</header>
+
+                        <h:form id="formMenu">
+
+                            <p:growl id="growl"
+                                     showSummary="false"
+                                     showDetail="true">
+                                <p:autoUpdate/>
+                            </p:growl>
+
+                            <p:menubar>
+                                <p:menuitem value="Home"
+                                            outcome="/index"
+                                            icon="pi pi-home"/>
+
+                                <p:menuitem value="Venda"
+                                            outcome="/venda/venda"
+                                            icon="pi pi-cart-plus pi-fw pi-pencil"/>
+                            </p:menubar>
+                        </h:form>
+                    </div>
+                </ui:insert>
+            </div>
+
+            <div id="content" class="center_content">
+
+                <ui:insert name="content">
+                    Conteúdo
+                </ui:insert>
+            </div>
+
+            <div id="bottom">
+                <ui:insert name="bottom">
+                    Instituto Federal de Educação, Ciência e Tecnologia de São Paulo - Câmpus Presidente Epitácio
+                    <br/>
+                    Rua José Ramos Junior, 27-50 - Jardim Tropical - Presidente Epitácio - SP - Brasil - Cep: 19470-000
+                    <br/>
+                    Fone/Fax: (18) 3281-9599/3281-9592. E-mail: pep@ifsp.edu.br
+                </ui:insert>
+            </div>
+        </div>
     </h:body>
 </html>
