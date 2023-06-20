@@ -61,13 +61,59 @@
                                    required="true"/>
 
                     <f:facet name="footer">
-                        <p:panel rendered="false">
-                            teste
-                        </p:panel>
+
+                        <p:panelGrid columns="2" rendered="#{investimentoController.calculado}">
+
+                            <p:outputLabel for="@next" value="Rendimento Bruto"/>
+                            <p:inputNumber id="rendimentoBruto"
+                                           value="#{investimentoController.investimento.rendimentoBruto}"
+                                           symbol="R$ "
+                                           symbolPosition="p"
+                                           decimalSeparator=","
+                                           thousandSeparator="."
+                                           readonly="true"/>
+
+                            <p:outputLabel for="@next" value="Imposto de Renda"/>
+                            <p:inputNumber id="ir"
+                                           value="#{investimentoController.investimento.ir}"
+                                           symbol="R$ "
+                                           symbolPosition="p"
+                                           decimalSeparator=","
+                                           thousandSeparator="."
+                                           readonly="true"/>
+
+                            <p:outputLabel for="@next" value="Rendimento Líquido"/>
+                            <p:inputNumber id="rendimentoLiquido"
+                                           value="#{investimentoController.investimento.rendimentoLiquido}"
+                                           symbol="R$ "
+                                           symbolPosition="p"
+                                           decimalSeparator=","
+                                           thousandSeparator="."
+                                           readonly="true"/>
+
+                            <p:outputLabel for="@next" value="Montante"/>
+                            <p:inputNumber id="montante"
+                                           value="#{investimentoController.investimento.montante}"
+                                           symbol="R$ "
+                                           symbolPosition="p"
+                                           decimalSeparator=","
+                                           thousandSeparator="."
+                                           readonly="true"/>
+
+                            <f:facet name= "footer">
+
+                                <p:commandButton value="Novo Investimento"
+                                                 style="margin: 0 auto; display: block;"
+                                                 action="#{investimentoController.novoInvestimento()}"
+                                                 update="growl, @form"/>
+                            </f:facet>
+
+                        </p:panelGrid>
                         <p:commandButton value="Calcular"
                                          style="margin: 0 auto; display: block;"
                                          action="#{investimentoController.cadastrarInvestimento()}"
                                          update="growl, @form"/>
+
 
                     </f:facet>
                 </p:panelGrid>

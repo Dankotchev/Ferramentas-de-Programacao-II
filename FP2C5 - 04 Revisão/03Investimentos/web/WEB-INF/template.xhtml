@@ -16,7 +16,10 @@
     <h:body>
 
         <ui:insert name="top">
-            <p:menubar>
+            
+            <h:form id="menuBar">
+                
+                <p:menubar>
 
                 <p:menuitem value="Investir"
                             outcome="/index"
@@ -26,6 +29,7 @@
                             outcome="/table"
                             icon="pi pi-chart-pie"/>
             </p:menubar>
+            </h:form>
         </ui:insert>
 
         <ui:insert name="content">

@@ -35,13 +35,50 @@ public class Investimento implements Serializable {
     private double rendimentoBruto;
 
     @Column(name = "rendimento_liquido", nullable = false, precision = 12, scale = 2)
-    private double rendimentoLíquido;
+    private double rendimentoLiquido;
+
+    public void calcularInvestimento() {
+        calcularRendimentoBruto();
+        
+        if (this.tipo.equalsIgnoreCase("CDB")){
+            calcularIR();
+            this.rendimentoLiquido = this.rendimentoBruto - this.ir;
+        }
+        else
+            this.rendimentoLiquido = this.rendimentoBruto;
+        
+        calcularMontante();
+    }
+
+    private void calcularRendimentoBruto() {
+        double jurosDiario;
+        double montanteBruto;
+
+        jurosDiario = Math.pow((this.porcentagem / 100) + 1, ((double) 1 / 365));
+        montanteBruto = this.valorInvestido * Math.pow(jurosDiario, this.tempoInvestido);
+        this.rendimentoBruto = montanteBruto - this.valorInvestido;
+    }
+
+    private void calcularIR() {
+        if (this.tempoInvestido <= 180)
+            this.ir = this.rendimentoBruto * 0.225;
+        else if (this.tempoInvestido <= 360)
+            this.ir = this.rendimentoBruto * 0.200;
+        else if (this.tempoInvestido <= 720)
+            this.ir = this.rendimentoBruto * 0.175;
+        else
+            this.ir = this.rendimentoBruto * 0.150;
+    }
+
+    private void calcularMontante() {
+        this.montante = this.valorInvestido + this.rendimentoLiquido;
+    }
 
     //
     public Investimento() {
         this.ir = 0.0;
         this.rendimentoBruto = 0.0;
-        this.rendimentoLíquido = 0.0;
+        this.rendimentoLiquido = 0.0;
     }
 
     public Integer getId() {
@@ -93,7 +130,7 @@ public class Investimento implements Serializable {
     }
 
     public double getMontante() {
-        return rendimentoBruto;
+        return montante;
     }
 
     public void setMontante(double montante) {
@@ -108,12 +145,12 @@ public class Investimento implements Serializable {
         this.rendimentoBruto = rendimentoBruto;
     }
 
-    public double getRendimentoLíquido() {
-        return rendimentoLíquido;
+    public double getRendimentoLiquido() {
+        return rendimentoLiquido;
     }
 
-    public void setRendimentoLíquido(double rendimentoLíquido) {
-        this.rendimentoLíquido = rendimentoLíquido;
+    public void setRendimentoLiquido(double rendimentoLiquido) {
+        this.rendimentoLiquido = rendimentoLiquido;
     }
 
     @Override
@@ -133,10 +170,5 @@ public class Investimento implements Serializable {
             return false;
         final Investimento other = (Investimento) obj;
         return Objects.equals(this.id, other.id);
-    }
-
-    @Override
-    public String toString() {
-        return "Investimento{" + "id=" + id + ", tipo=" + tipo + ", valorInvestido=" + valorInvestido + ", porcentagem=" + porcentagem + ", tempoInvestido=" + tempoInvestido + ", ir=" + ir + ", montante=" + montante + ", rendimentoBruto=" + rendimentoBruto + ", rendimentoL\u00edquido=" + rendimentoLíquido + '}';
     }
 }

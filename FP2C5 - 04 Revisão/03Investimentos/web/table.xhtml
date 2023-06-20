@@ -13,45 +13,64 @@
 
     <ui:define name="content">
         <h:form>
-            
+
             <p:dataTable id="investimentos"
                          var="investimento"
                          value="#{investimentoController.carteiraInvestimento.carteira}"
                          rowKey="#{investimento.id}"
                          selectionMode="single">
-                
+
                 <f:facet name="header">
                     Carteira de investimentos
                 </f:facet>
-                
-                <p:column headerText="Tipo">
-                    <h:outputText value="#{investimento.tipo}"/>
+
+                <p:column headerText="Tipo" >
+                    <h:outputText value="#{investimento.tipo}" id="outTipo"/>
                 </p:column>
-                
+
                 <p:column headerText="Valor Investido">
-                    <h:outputText value="#{investimento.valorInvestido}"/>
+                    <h:outputText value="#{investimento.valorInvestido}" id="outInvestido">
+                        <f:convertNumber currencyCode="R$"
+                                         maxFractionDigits="2"/>
+                    </h:outputText>
                 </p:column>
-                
+
                 <p:column headerText="%">
-                    <h:outputText value="#{investimento.porcentagem}"/>
+                    <h:outputText value="#{investimento.porcentagem}" id="outPorcentagem"/>
                 </p:column>
-                
+
                 <p:column headerText="Tempo do Investimento">
-                    <h:outputText value="#{investimento.tempoInvestido}"/>
+                    <h:outputText value="#{investimento.tempoInvestido}" id="outTempo"/>
                 </p:column>
-                
+
+                <p:column headerText="Montante">
+                    <h:outputText value="#{investimento.montante}" id="outMontante">
+                        <f:convertNumber currencyCode="R$"
+                                         maxFractionDigits="2"/>
+                    </h:outputText>
+                </p:column>
+
                 <p:column headerText="Rendimento Bruto">
-                    <h:outputText value="#{investimento.rendimentoBruto}"/>
+                    <h:outputText value="#{investimento.rendimentoBruto}" id="outBruto">
+                        <f:convertNumber currencyCode="R$"
+                                         maxFractionDigits="2"/>
+                    </h:outputText>
                 </p:column>
-                
+
                 <p:column headerText="Rendimento Líquido">
-                    <h:outputText value="#{investimento.rendimentoLiquido}"/>
+                    <h:outputText value="#{investimento.rendimentoLiquido}" id="outLiquido">
+                        <f:convertNumber currencyCode="R$"
+                                         maxFractionDigits="2"/>
+                    </h:outputText>
                 </p:column>
-                
+
                 <p:column headerText="Imposto de Renda">
-                    <h:outputText value="#{investimento.ir}"/>
+                    <h:outputText value="#{investimento.ir}" id="outIR">
+                        <f:convertNumber currencyCode="R$"
+                                         maxFractionDigits="2"/>
+                    </h:outputText>
                 </p:column>
-                
+
             </p:dataTable>
         </h:form>
     </ui:define>
