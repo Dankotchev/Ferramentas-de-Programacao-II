@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./WEB-INF/template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="title">
+        Inserir Tarefas
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form id="formInserirTarefa">
+
+            <div>
+                <p:panelGrid columns="2">
+
+                    <f:facet name="header">
+                        Tarefa
+                    </f:facet>
+
+                    <p:outputLabel for="@next" value="Descrição"/>
+                    <p:inputTextarea id="name"
+                                     value="#{tarefaController.tarefa.descricao}"
+                                     required="true"
+                                     requiredMessage="Informe uma descrição"/>
+
+                    <p:outputLabel for="@next" value="Data de Cadastro"/>
+                    <p:datePicker id="dataCadastro"
+                                  value="#{tarefaController.dataAtual()}"
+                                  required="true"
+                                  readonly="true"
+                                  autocomplete="false"/>
+
+                    <p:outputLabel for="@next" value="Status"/>
+                    <p:inputText id="status"
+                                 value="CADASTRADA"
+                                 required="true"
+                                 autocomplete="false"
+                                 readonly="true"/>
+
+
+                    <f:facet name="footer">
+                        <p:commandButton value="Cadastrar"
+                                         style="margin: 0 auto; display: block;"
+                                         action="#{tarefaController.cadastrarTarefa}"
+                                         update="@form"/>
+                    </f:facet>
+                </p:panelGrid>
+            </div>
+        </h:form>
+    </ui:define>
+</ui:composition>

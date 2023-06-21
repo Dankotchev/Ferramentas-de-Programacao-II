@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title><ui:insert name="title">Facelets Templates</ui:insert></title>
+    </h:head>
+
+    <h:body>
+
+        <div id="container">
+
+            <div id="top">
+
+                <ui:insert name="top">
+
+                    <div class="card">
+
+                        <h:form id="formMenu">
+
+                            <p:growl id="growl"
+                                     showSummary="false"
+                                     showDetail="true">
+                                <p:autoUpdate/>
+                            </p:growl>
+
+                            <p:menubar>
+                                <p:menuitem value="Inserir"
+                                            outcome="/index"
+                                            icon="pi pi-check-circle"/>
+
+                                <p:menuitem value="Lista de Tarefas"
+                                            outcome="/lista"
+                                            icon="pi pi-bars"/>
+                            </p:menubar>
+                        </h:form>
+                    </div>
+                </ui:insert>
+            </div>
+
+            <div id="content" class="center_content">
+
+                <ui:insert name="content">
+                    Conteúdo
+                </ui:insert>
+            </div>
+        </div>
+    </h:body>
+</html>
